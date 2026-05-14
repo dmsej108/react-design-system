@@ -19,9 +19,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
+        run: npm install -g pnpm@latest
 
       - name: Install dependencies
         run: pnpm install
