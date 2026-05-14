@@ -1,6 +1,6 @@
 {
   "name": "@zzou/design-system",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "type": "module",
   "description": "Reusable React design system for zzou.",
@@ -25,7 +25,9 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
-    "src/**/*.css"
+    "src/styles",
+    "src/tokens",
+    "src/components/**/*.module.css"
   ],
   "publishConfig": {
     "access": "public"
