@@ -12,17 +12,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js and pnpm
+      - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
           node-version: '20'
           cache: 'pnpm'
 
-      - name: Install dependencies
+      - name: Enable pnpm via Corepack
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
-          pnpm install
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Build Storybook
         run: pnpm build-storybook
