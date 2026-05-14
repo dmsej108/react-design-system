@@ -1,25 +1,57 @@
 {
   "name": "@starbanking/design-system",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "type": "module",
+  "description": "Reusable React design system for StarBanking.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zzous/react-design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zzous/react-design-system/issues"
+  },
+  "homepage": "https://zzous.github.io/react-design-system/",
   "exports": {
     ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./styles": "./src/tokens/index.css",
     "./legacy-styles": "./src/styles/legacy/index.css"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src/**/*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "storybook dev --port 6006",
-    "build": "tsc --noEmit",
     "storybook": "storybook dev --port 6006",
-    "build-storybook": "storybook build"
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "build-storybook": "storybook build",
+    "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@types/react-datepicker": "^7.0.0",
     "react-datepicker": "^9.1.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    }
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^8.6.17",
@@ -30,6 +62,7 @@
     "@storybook/react-vite": "^8.6.17",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@types/react-datepicker": "^7.0.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "storybook": "^8.6.17",
