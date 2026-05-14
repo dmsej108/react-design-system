@@ -1,6 +1,6 @@
 {
   "name": "@zzou/design-system",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": false,
   "type": "module",
   "description": "Reusable React design system for zzou.",
@@ -18,6 +18,7 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
+    "./dist/index.css": "./dist/index.css",
     "./styles": "./src/tokens/index.css",
     "./legacy-styles": "./src/styles/index.css"
   },
@@ -26,17 +27,19 @@
   "files": [
     "dist",
     "src/styles",
-    "src/tokens",
-    "src/components/**/*.module.css"
+    "src/tokens"
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
   },
   "scripts": {
     "dev": "storybook dev --port 6006",
     "storybook": "storybook dev --port 6006",
     "typecheck": "tsc --noEmit",
-    "build": "tsc",
+    "build": "tsup",
     "build-storybook": "storybook build",
     "prepare": "pnpm run build"
   },
@@ -63,11 +66,12 @@
     "@storybook/react": "^8.6.17",
     "@storybook/react-vite": "^8.6.17",
     "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
     "@types/react-datepicker": "^7.0.0",
+    "@types/react-dom": "^18.3.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "storybook": "^8.6.17",
+    "tsup": "^8.5.1",
     "typescript": "^5.4.5",
     "vite": "^5.3.4"
   }
