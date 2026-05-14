@@ -1,3 +1,5 @@
+import './tokens/index.css';
+
 export { Button as SButton } from './components/Button';
 export type { ButtonProps as SButtonProps, ButtonVariant as SButtonVariant, ButtonSize as SButtonSize } from './components/Button';
 
