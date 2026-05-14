@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "type": "module",
-  "description": "Reusable React design system for StarBanking.",
+  "description": "Reusable React design system for zzou.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
       "types": "./dist/index.d.ts"
     },
     "./styles": "./src/tokens/index.css",
-    "./legacy-styles": "./src/styles/legacy/index.css"
+    "./legacy-styles": "./src/styles/index.css"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

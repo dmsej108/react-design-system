@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/legacy/index.css';
+import styles from './SearchItem.module.css';
 
 export interface SearchItemProps {
   label?: string;
@@ -16,16 +16,16 @@ export const SearchItem = ({ label, type,selectData, value, changeValue }: Searc
     };
 
     return (
-        <div className={'item'}>
-            <label>{label}</label>
+        <div className={styles.item}>
+            <label className={styles.label}>{label}</label>
             {type === 'input' && (
-                <span className={'input'}>
-                    <input type="text" className={'form-control'} onChange={chagngeValueHandler} value={value || ''} />
+                <span className={styles.input}>
+                    <input type="text" className={styles.formControl} onChange={chagngeValueHandler} value={value || ''} />
                 </span>
             )}
             {type === 'select' && (
-                <span className={'input'}>
-                    <select className={'custom-select'} onChange={chagngeValueHandler} value={value || ''}>
+                <span className={styles.input}>
+                    <select className={styles.select} onChange={chagngeValueHandler} value={value || ''}>
                         <option value="">선택하세요</option>
                         {selectData?.map((option, index) => (
                             <option key={index} value={option.value}>{option.label}</option>
@@ -34,9 +34,9 @@ export const SearchItem = ({ label, type,selectData, value, changeValue }: Searc
                 </span>
             )}
             {type === 'radio' && (
-                <span className={'input'}>
+                <span className={styles.input}>
                     { selectData?.map((option, index) => (
-                        <span key={index} className={'radio'}>
+                        <span key={index} className={styles.radio}>
                             <input type="radio" id={`${label}-option${index}`} name={label} value={option.value} checked={value === option.value} onChange={chagngeValueHandler} />
                             <label htmlFor={`${label}-option${index}`}>{option.label} </label>
                         </span>
@@ -44,9 +44,9 @@ export const SearchItem = ({ label, type,selectData, value, changeValue }: Searc
                 </span>
             )}
             {type === 'checkbox' && (
-                <span className={'input'}>
+                <span className={styles.input}>
                     { selectData?.map((option, index) => (
-                        <span key={index} className={'checkbox'}>
+                        <span key={index} className={styles.checkbox}>
                             <input type="checkbox" id={`${label}-option${index}`} name={label} value={option.value} checked={value === option.value} onChange={chagngeValueHandler} />
                             <label htmlFor={`${label}-option${index}`}>{option.label}</label>
                         </span>

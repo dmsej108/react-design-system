@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import '../../styles/legacy/index.css';
+import styles from './DateRangePicker.module.css';
 export interface DateRangePickerProps {
   label?: string;
   onDateChange?: (startDate: Date | null, endDate: Date | null) => void;
@@ -37,11 +37,11 @@ export const DateRangePicker = ({ label = '기간검색', onDateChange }: DateRa
   };
 
   return (
-    <div className="date-picker">
-      <div className="item">
-        <label>{label}</label>
-        <div className="input">
-          <select className="custom-select" onChange={handleChangeDate}>
+    <div className={styles.container}>
+      <div className={styles.item}>
+        <label className={styles.label}>{label}</label>
+        <div className={styles.input}>
+          <select className={styles.select} onChange={handleChangeDate}>
             {dateLists.map((item, index) => (
               <option key={index} value={item.value}>{item.label}</option>
             ))}

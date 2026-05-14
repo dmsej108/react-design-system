@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/legacy/index.css';
+import styles from './BaseButton.module.css';
 
 export interface BaseButtonProps {
     label?: string;
@@ -12,12 +12,12 @@ export interface BaseButtonProps {
 }
 
 const btnSizeMap: Record<NonNullable<BaseButtonProps['btnsize']>, string> = {
-    small: 'btn-sm',
-    medium: 'btn-slm',
-    large: 'btn-sl',
-    sm: 'btn-sm',
-    md: 'btn-slm',
-    lg: 'btn-sl',
+    small: styles.btnSm,
+    medium: styles.btnSlm,
+    large: styles.btnSl,
+    sm: styles.btnSm,
+    md: styles.btnSlm,
+    lg: styles.btnSl,
 };
 
 export const BaseButton = ({ label, btnsize = 'small', iconClass, type, iconSize, offscreen, changeValue }: BaseButtonProps) => {
@@ -29,11 +29,11 @@ export const BaseButton = ({ label, btnsize = 'small', iconClass, type, iconSize
     const sizeClass = btnSizeMap[btnsize] ?? btnSizeMap.small;
 
     return (
-        <button type="button" className={`btn ${sizeClass}`} onClick={changeValueHandler}>
+        <button type="button" className={`${styles.btn} ${sizeClass}`} onClick={changeValueHandler}>
             {type === 'icon' && (
-                <span className={`${iconClass} ${iconSize ? `${iconSize}` : ''}`}></span>
+                <span className={`${iconClass ?? ''} ${iconSize ? `${iconSize}` : ''}`}></span>
             )}
-            {offscreen && <span className="offscreen">{label}</span>}
+            {offscreen && <span className={styles.offscreen}>{label}</span>}
             {!offscreen && label}
         </button>
     );

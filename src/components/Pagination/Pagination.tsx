@@ -1,5 +1,5 @@
 
-import '../../styles/legacy/index.css';
+import styles from './Pagination.module.css';
 export interface PaginationProps {
   itemCount?: number;
   cntPerPage?: number;
@@ -49,18 +49,18 @@ export const Pagination = ({itemCount=0, cntPerPage=0, currentPage=0, onChangedP
     };
    
   return (
-     <ul className="pagination">
-            <li className="page-item first"><button type="button" className="page-link" onClick={() => handleChangedPage(1, true)}><span className="offscreen">맨처음</span></button></li>
-            <li className="page-item prev"><button type="button" className="page-link" onClick={() => handleChangedPage(currentPage - 1, true)}><span className="offscreen">이전</span></button></li>
+     <ul className={styles.pagination}>
+            <li className={`${styles.pageItem} ${styles.first}`}><button type="button" className={styles.pageLink} onClick={() => handleChangedPage(1, true)}><span className={styles.offscreen}>맨처음</span></button></li>
+            <li className={`${styles.pageItem} ${styles.prev}`}><button type="button" className={styles.pageLink} onClick={() => handleChangedPage(currentPage - 1, true)}><span className={styles.offscreen}>이전</span></button></li>
             
             {pageNumbers.map((pageNum) => (
-                <li key={pageNum} className={`page-item ${pageNum === currentPage ? 'active' : ''}`}>
-                    <button type="button" className="page-link" onClick={() => handleChangedPage(pageNum, true)}>{pageNum}</button>
+                <li key={pageNum} className={`${styles.pageItem} ${pageNum === currentPage ? styles.active : ''}`}>
+                    <button type="button" className={styles.pageLink} onClick={() => handleChangedPage(pageNum, true)}>{pageNum}</button>
                 </li>
             ))}
             
-            <li className="page-item next"><button type="button" className="page-link" onClick={() => handleChangedPage(currentPage + 1, true)}><span className="offscreen">다음</span></button></li>
-            <li className="page-item last"><button type="button" className="page-link" onClick={() => handleChangedPage(pageCount, true)}><span className="offscreen">맨끝</span></button></li>
+            <li className={`${styles.pageItem} ${styles.next}`}><button type="button" className={styles.pageLink} onClick={() => handleChangedPage(currentPage + 1, true)}><span className={styles.offscreen}>다음</span></button></li>
+            <li className={`${styles.pageItem} ${styles.last}`}><button type="button" className={styles.pageLink} onClick={() => handleChangedPage(pageCount, true)}><span className={styles.offscreen}>맨끝</span></button></li>
         </ul>
   );
 };
