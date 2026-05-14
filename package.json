@@ -1,6 +1,6 @@
 {
   "name": "@zzou/design-system",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": false,
   "type": "module",
   "description": "Reusable React design system for zzou.",
@@ -33,13 +33,15 @@
     "access": "public"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild"]
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   },
   "scripts": {
     "dev": "storybook dev --port 6006",
     "storybook": "storybook dev --port 6006",
     "typecheck": "tsc --noEmit",
-    "build": "tsup",
+    "build": "vite build --config vite.lib.config.ts",
     "build-storybook": "storybook build",
     "prepare": "pnpm run build"
   },
@@ -68,11 +70,13 @@
     "@types/react": "^18.3.3",
     "@types/react-datepicker": "^7.0.0",
     "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.7.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "storybook": "^8.6.17",
     "tsup": "^8.5.1",
     "typescript": "^5.4.5",
-    "vite": "^5.3.4"
+    "vite": "^5.3.4",
+    "vite-plugin-dts": "^5.0.0"
   }
 }

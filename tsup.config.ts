@@ -6,4 +6,10 @@ export default defineConfig({
   dts: true,
   sourcemap: true,
   clean: true,
+  esbuildOptions(options) {
+    options.loader = {
+      ...options.loader,
+      '.module.css': 'local-css',
+    };
+  },
 });
