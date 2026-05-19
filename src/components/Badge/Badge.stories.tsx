@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Badge } from './Badge';
+import { Badge as SBadge } from './Badge';
 
-const meta: Meta<typeof Badge> = {
+const meta: Meta<typeof SBadge> = {
   title: 'Components/Badge',
-  component: Badge,
+  component: SBadge,
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -13,7 +13,7 @@ const meta: Meta<typeof Badge> = {
     },
     size: {
       control: 'radio',
-      options: ['sm', 'md', 'lg'],
+      options: ['small', 'medium', 'large'],
     },
     dot: { control: 'boolean', description: '상태 점 표시' },
     contorl: {
@@ -25,25 +25,25 @@ const meta: Meta<typeof Badge> = {
   args: {
     children: 'Badge',
     variant: 'primary',
-    size: 'md',
+    size: 'medium',
     dot: false,
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Badge>;
+type Story = StoryObj<typeof SBadge>;
 
 export const Playground: Story = {};
 
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
-      <Badge variant="primary" >Primary</Badge>
-      <Badge variant="secondary">Secondary</Badge>
-      <Badge variant="success">Success</Badge>
-      <Badge variant="warning">Warning</Badge>
-      <Badge variant="error">Error</Badge>
-      <Badge variant="info">Info</Badge>
+      <SBadge variant="primary">Primary</SBadge>
+      <SBadge variant="secondary">Secondary</SBadge>
+      <SBadge variant="success">Success</SBadge>
+      <SBadge variant="warning">Warning</SBadge>
+      <SBadge variant="error">Error</SBadge>
+      <SBadge variant="info">Info</SBadge>
     </div>
   ),
 };
@@ -51,11 +51,11 @@ export const Variants: Story = {
 export const WithDot: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
-      <Badge variant="success" dot>완료</Badge>
-      <Badge variant="warning" dot>처리중</Badge>
-      <Badge variant="error" dot>실패</Badge>
-      <Badge variant="neutral" dot>대기</Badge>
-      <Badge variant="info" dot>정보</Badge>
+      <SBadge variant="success" dot>완료</SBadge>
+      <SBadge variant="warning" dot>처리중</SBadge>
+      <SBadge variant="error" dot>실패</SBadge>
+      <SBadge variant="neutral" dot>대기</SBadge>
+      <SBadge variant="info" dot>정보</SBadge>
     </div>
   ),
 };
@@ -63,9 +63,9 @@ export const WithDot: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-      <Badge size="sm" variant="primary">Small</Badge>
-      <Badge size="md" variant="primary">Medium</Badge>
-      <Badge size="lg" variant="primary">Large</Badge>
+      <SBadge size="small" variant="primary">Small</SBadge>
+      <SBadge size="medium" variant="primary">Medium</SBadge>
+      <SBadge size="large" variant="primary">Large</SBadge>
     </div>
   ),
 };
@@ -76,7 +76,7 @@ export const ContorlTypes: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {(['a', 'b', 'c'] as const).map((type) => (
         <div key={type} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Badge contorl={type}>Badge</Badge>
+          <SBadge contorl={type}>Badge</SBadge>
           <span style={{ fontSize: '0.75rem', color: '#667085' }}>data-type="{type}"</span>
         </div>
       ))}
@@ -90,7 +90,7 @@ export const InLogoContext: Story = {
     <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 16px', background: '#1d2939', borderRadius: 8 }}>
       <div style={{ width: 32, height: 32, borderRadius: 8, background: '#0052cc', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 700 }}>S</div>
       <span style={{ color: '#fff', fontWeight: 600, fontSize: '1rem' }}>StarBanking</span>
-      <Badge>Badge</Badge>
+      <SBadge>Badge</SBadge>
     </div>
   ),
 };
@@ -108,7 +108,7 @@ export const BankingStatuses: Story = {
         { label: '신규 계좌',   variant: 'info'    as const },
       ].map(({ label, variant, dot }) => (
         <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Badge variant={variant} dot={dot}>{label}</Badge>
+          <SBadge variant={variant} dot={dot}>{label}</SBadge>
         </div>
       ))}
     </div>

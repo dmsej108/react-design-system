@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Icon } from './Icon';
+import { Icon as SIcon } from './Icon';
 import type { IconName, IconSize } from './Icon';
 
 const ALL_ICONS: IconName[] = [
@@ -27,23 +27,23 @@ const GROUPS: { label: string; icons: IconName[] }[] = [
   { label: 'Banking', icons: ['creditCard', 'transfer', 'wallet'] },
 ];
 
-const meta: Meta<typeof Icon> = {
+const meta: Meta<typeof SIcon> = {
   title: 'Components/Icon',
-  component: Icon,
+  component: SIcon,
   tags: ['autodocs'],
   argTypes: {
     name: { control: 'select', options: ALL_ICONS },
-    size: { control: 'radio', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
+    size: { control: 'radio', options: ['xs', 'small', 'medium', 'large', 'xl'] },
     color: { control: 'color' },
   },
   args: {
     name: 'search',
-    size: 'md',
+    size: 'medium',
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Icon>;
+type Story = StoryObj<typeof SIcon>;
 
 /* ── Playground ── */
 export const Playground: Story = {};
@@ -75,7 +75,7 @@ export const AllIcons: Story = {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = '#f7f7f7'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = ''; }}
               >
-                <Icon name={name} size="lg" />
+                <SIcon name={name} size="large" />
                 <span style={{ fontSize: 10, color: '#767676', textAlign: 'center', lineHeight: 1.3 }}>{name}</span>
               </div>
             ))}
@@ -91,14 +91,14 @@ export const Sizes: Story = {
   name: '크기',
   render: () => (
     <div style={{ display: 'flex', gap: 24, alignItems: 'flex-end', flexWrap: 'wrap' }}>
-      {(['xs', 'sm', 'md', 'lg', 'xl'] as IconSize[]).map((size) => (
+      {(['xs', 'small', 'medium', 'large', 'xl'] as IconSize[]).map((size) => (
         <div key={size} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-          <Icon name="send" size={size} />
+          <SIcon name="send" size={size} />
           <span style={{ fontSize: 11, color: '#767676' }}>{size}</span>
         </div>
       ))}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-        <Icon name="send" size={32} />
+        <SIcon name="send" size={32} />
         <span style={{ fontSize: 11, color: '#767676' }}>32px</span>
       </div>
     </div>
@@ -120,7 +120,7 @@ export const Colors: Story = {
         { label: 'brand', color: '#253349' },
       ].map(({ label, color }) => (
         <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-          <Icon name="bell" size="xl" color={color} />
+          <SIcon name="bell" size="xl" color={color} />
           <span style={{ fontSize: 11, color: '#767676' }}>{label}</span>
         </div>
       ))}
@@ -140,7 +140,7 @@ export const StatusIcons: Story = {
         { name: 'info' as IconName, color: '#287eff', label: '정보' },
       ].map(({ name, color, label }) => (
         <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderRadius: 6, border: '1px solid #ebebeb' }}>
-          <Icon name={name} size="md" color={color} />
+          <SIcon name={name} size="medium" color={color} />
           <span style={{ fontSize: 13, color: '#444' }}>{label}</span>
         </div>
       ))}
@@ -171,7 +171,7 @@ export const BankingIcons: Story = {
             width: 40, height: 40, borderRadius: 10, background: '#f0f6ff',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
-            <Icon name={name} size="lg" color="#287eff" />
+            <SIcon name={name} size="large" color="#287eff" />
           </div>
           <span style={{ fontSize: 11, color: '#444' }}>{label}</span>
         </div>
@@ -213,7 +213,7 @@ export const IconSearch: Story = {
                 onClick={() => navigator.clipboard?.writeText(name)}
                 title={`클릭하여 "${name}" 복사`}
               >
-                <Icon name={name} size="lg" />
+                <SIcon name={name} size="large" />
                 <span style={{ fontSize: 10, color: '#767676', textAlign: 'center' }}>{name}</span>
               </div>
             ))}

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Input.module.css';
 
-export type InputSize = 'sm' | 'md' | 'lg';
+export type InputSize = 'small' | 'medium' | 'large';
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
   label?: string;
@@ -18,7 +18,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       label,
-      size = 'md',
+      size = 'medium',
       error = false,
       helperText,
       errorText,
@@ -64,4 +64,4 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   },
 );
 
-Input.displayName = 'Input';
+Input.displayName = 'SInput';

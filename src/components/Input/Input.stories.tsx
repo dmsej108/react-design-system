@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Input } from './Input';
+import { Input as SInput } from './Input';
 
 const SearchIcon = () => (
   <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -11,14 +11,14 @@ const WonIcon = () => (
   <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-neutral-500)' }}>원</span>
 );
 
-const meta: Meta<typeof Input> = {
+const meta: Meta<typeof SInput> = {
   title: 'Components/Input',
-  component: Input,
+  component: SInput,
   tags: ['autodocs'],
   argTypes: {
     size: {
       control: 'radio',
-      options: ['sm', 'md', 'lg'],
+      options: ['small', 'medium', 'large'],
       description: '입력 필드 크기',
     },
     label: { control: 'text', description: '레이블' },
@@ -32,7 +32,7 @@ const meta: Meta<typeof Input> = {
   args: {
     label: '레이블',
     placeholder: '입력하세요',
-    size: 'md',
+    size: 'medium',
     error: false,
     disabled: false,
     required: false,
@@ -41,16 +41,16 @@ const meta: Meta<typeof Input> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Input>;
+type Story = StoryObj<typeof SInput>;
 
 export const Playground: Story = {};
 
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <Input size="sm" label="Small" placeholder="Small input" />
-      <Input size="md" label="Medium" placeholder="Medium input" />
-      <Input size="lg" label="Large" placeholder="Large input" />
+      <SInput size="small" label="Small" placeholder="Small input" />
+      <SInput size="medium" label="Medium" placeholder="Medium input" />
+      <SInput size="large" label="Large" placeholder="Large input" />
     </div>
   ),
 };
@@ -102,13 +102,13 @@ export const Disabled: Story = {
 export const AllStates: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <Input label="기본" placeholder="입력하세요" />
-      <Input label="필수" placeholder="필수 항목" required />
-      <Input label="오류" error errorText="오류가 발생했습니다." defaultValue="잘못된 값" />
-      <Input label="도움말" placeholder="입력하세요" helperText="8자 이상 입력해주세요." />
-      <Input label="접두 아이콘" placeholder="검색" prefix={<SearchIcon />} />
-      <Input label="접미 텍스트" placeholder="0" suffix={<WonIcon />} />
-      <Input label="비활성화" defaultValue="수정 불가" disabled />
+      <SInput label="기본" placeholder="입력하세요" />
+      <SInput label="필수" placeholder="필수 항목" required />
+      <SInput label="오류" error errorText="오류가 발생했습니다." defaultValue="잘못된 값" />
+      <SInput label="도움말" placeholder="입력하세요" helperText="8자 이상 입력해주세요." />
+      <SInput label="접두 아이콘" placeholder="검색" prefix={<SearchIcon />} />
+      <SInput label="접미 텍스트" placeholder="0" suffix={<WonIcon />} />
+      <SInput label="비활성화" defaultValue="수정 불가" disabled />
     </div>
   ),
 };

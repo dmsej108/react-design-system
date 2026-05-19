@@ -5,7 +5,7 @@ export interface BaseButtonProps {
     label?: string;
     type?: string;
     iconClass?: string;
-    btnsize?: 'small' | 'medium' | 'large' | 'sm' | 'md' | 'lg';
+    btnsize?: 'small' | 'medium' | 'large';
     iconSize?: 'sg' | 'mg' | 'lg';
     offscreen?: boolean;
     changeValue?: (value: string) => void;
@@ -15,9 +15,6 @@ const btnSizeMap: Record<NonNullable<BaseButtonProps['btnsize']>, string> = {
     small: styles.btnSm,
     medium: styles.btnSlm,
     large: styles.btnSl,
-    sm: styles.btnSm,
-    md: styles.btnSlm,
-    lg: styles.btnSl,
 };
 
 export const BaseButton = ({ label, btnsize = 'small', iconClass, type, iconSize, offscreen, changeValue }: BaseButtonProps) => {
@@ -39,4 +36,4 @@ export const BaseButton = ({ label, btnsize = 'small', iconClass, type, iconSize
     );
 };
 
-BaseButton.displayName = 'BaseButton';
+BaseButton.displayName = 'SBaseButton';

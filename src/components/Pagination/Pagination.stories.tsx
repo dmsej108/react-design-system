@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Pagination } from './Pagination';
+import { Pagination as SPagination } from './Pagination';
 
-const meta: Meta<typeof Pagination> = {
+const meta: Meta<typeof SPagination> = {
   title: 'Components/Pagination',
-  component: Pagination,
+  component: SPagination,
   tags: ['autodocs'],
   argTypes: {
     itemCount: { control: 'number', description: '전체 아이템 수' },
@@ -20,7 +20,7 @@ const meta: Meta<typeof Pagination> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Pagination>;
+type Story = StoryObj<typeof SPagination>;
 
 /* ── Playground ── */
 export const Playground: Story = {};
@@ -30,7 +30,7 @@ export const Interactive: Story = {
   render: (args) => {
     const [page, setPage] = useState(1);
     return (
-      <Pagination
+      <SPagination
         {...args}
         currentPage={page}
         onChangedPage={(pageNo) => setPage(pageNo)}

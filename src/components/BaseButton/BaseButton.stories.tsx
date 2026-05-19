@@ -1,10 +1,10 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { BaseButton } from './BaseButton';
+import { BaseButton as SBaseButton } from './BaseButton';
 
-const meta: Meta<typeof BaseButton> = {
+const meta: Meta<typeof SBaseButton> = {
   title: 'Components/BaseButton',
-  component: BaseButton,
+  component: SBaseButton,
   tags: ['autodocs'],
   argTypes: {
     label: { control: 'text', description: '버튼 텍스트' },
@@ -35,7 +35,7 @@ const meta: Meta<typeof BaseButton> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BaseButton>;
+type Story = StoryObj<typeof SBaseButton>;
 
 /* ── Playground ── */
 export const Playground: Story = {};
@@ -44,9 +44,9 @@ export const Playground: Story = {};
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-      <BaseButton label="Small" btnsize="small" />
-      <BaseButton label="Medium" btnsize="medium" />
-      <BaseButton label="Large" btnsize="large" />
+      <SBaseButton label="Small" btnsize="small" />
+      <SBaseButton label="Medium" btnsize="medium" />
+      <SBaseButton label="Large" btnsize="large" />
     </div>
   ),
 };

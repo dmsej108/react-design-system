@@ -12,19 +12,19 @@
 }
 
 /* ── Sizes ── */
-.sm {
+.small {
   height: 16px;
   line-height: 16px;
   padding: 0 8px;
   font-size: 10px;
 }
-.md {
+.medium {
   height: 20px;
   line-height: 20px;
   padding: 0 10px;
   font-size: 11px;
 }
-.lg {
+.large {
   height: 32px;
   line-height: 32px;
   padding: 0 12px;

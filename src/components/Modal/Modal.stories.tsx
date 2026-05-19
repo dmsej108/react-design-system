@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Modal } from './Modal';
-import { Button } from '../Button/Button';
-import { Input } from '../Input/Input';
+import { Modal as SModal } from './Modal';
+import { Button as SButton } from '../Button/Button';
+import { Input as SInput } from '../Input/Input';
 
-const meta: Meta<typeof Modal> = {
+const meta: Meta<typeof SModal> = {
   title: 'Components/Modal',
-  component: Modal,
+  component: SModal,
   tags: ['autodocs'],
   argTypes: {
     open: { control: 'boolean' },
-    size: { control: 'radio', options: ['sm', 'md', 'lg', 'xl', 'full'] },
+    size: { control: 'radio', options: ['small', 'medium', 'large', 'xl', 'full'] },
     footerAlign: { control: 'radio', options: ['left', 'center', 'right', 'spaceBetween'] },
     closeOnBackdrop: { control: 'boolean' },
     closeOnEsc: { control: 'boolean' },
@@ -22,16 +22,16 @@ const meta: Meta<typeof Modal> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Modal>;
+type Story = StoryObj<typeof SModal>;
 
 /* ── Wrapper to control open state ── */
-function ModalDemo(props: Partial<React.ComponentProps<typeof Modal>> & { triggerLabel?: string }) {
+function ModalDemo(props: Partial<React.ComponentProps<typeof SModal>> & { triggerLabel?: string }) {
   const [open, setOpen] = useState(false);
   const { triggerLabel = '모달 열기', ...rest } = props;
   return (
     <>
-      <Button onClick={() => setOpen(true)}>{triggerLabel}</Button>
-      <Modal open={open} onClose={() => setOpen(false)} {...rest} />
+      <SButton onClick={() => setOpen(true)}>{triggerLabel}</SButton>
+      <SModal open={open} onClose={() => setOpen(false)} {...rest} />
     </>
   );
 }
@@ -41,8 +41,8 @@ export const Playground: Story = {
     const [open, setOpen] = useState(false);
     return (
       <>
-        <Button onClick={() => setOpen(true)}>모달 열기</Button>
-        <Modal {...args} open={open} onClose={() => setOpen(false)} />
+        <SButton onClick={() => setOpen(true)}>모달 열기</SButton>
+        <SModal {...args} open={open} onClose={() => setOpen(false)} />
       </>
     );
   },
@@ -50,7 +50,7 @@ export const Playground: Story = {
     title: '모달 제목',
     description: '모달에 대한 간단한 설명입니다.',
     children: <p style={{ margin: 0 }}>모달 본문 내용이 여기에 들어갑니다.</p>,
-    size: 'md',
+    size: 'medium',
     footerAlign: 'right',
     closeOnBackdrop: true,
     closeOnEsc: true,
@@ -65,8 +65,8 @@ export const WithFooter: Story = {
       description="아래 내용을 다시 한번 확인해주세요."
       footer={
         <>
-          <Button variant="outline" onClick={() => {}}>취소</Button>
-          <Button onClick={() => {}}>이체하기</Button>
+          <SButton variant="outline" onClick={() => {}}>취소</SButton>
+          <SButton onClick={() => {}}>이체하기</SButton>
         </>
       }
     >
@@ -97,26 +97,26 @@ export const WithForm: Story = {
     const [open, setOpen] = useState(false);
     return (
       <>
-        <Button onClick={() => setOpen(true)}>계좌 추가</Button>
-        <Modal
+        <SButton onClick={() => setOpen(true)}>계좌 추가</SButton>
+        <SModal
           open={open}
           onClose={() => setOpen(false)}
           title="새 계좌 추가"
           description="연결할 계좌 정보를 입력해주세요."
-          size="sm"
+          size="small"
           footer={
             <>
-              <Button variant="outline" onClick={() => setOpen(false)}>취소</Button>
-              <Button onClick={() => setOpen(false)}>추가하기</Button>
+              <SButton variant="outline" onClick={() => setOpen(false)}>취소</SButton>
+              <SButton onClick={() => setOpen(false)}>추가하기</SButton>
             </>
           }
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <Input label="은행명" placeholder="예) 스타뱅크" required />
-            <Input label="계좌번호" placeholder="숫자만 입력" required />
-            <Input label="예금주명" placeholder="본인 이름" required />
+            <SInput label="은행명" placeholder="예) 스타뱅크" required />
+            <SInput label="계좌번호" placeholder="숫자만 입력" required />
+            <SInput label="예금주명" placeholder="본인 이름" required />
           </div>
-        </Modal>
+        </SModal>
       </>
     );
   },
@@ -127,11 +127,11 @@ export const Danger: Story = {
     <ModalDemo
       triggerLabel="계좌 해지"
       title="계좌를 해지하시겠습니까?"
-      size="sm"
+      size="small"
       footer={
         <>
-          <Button variant="outline" onClick={() => {}}>취소</Button>
-          <Button variant="danger" onClick={() => {}}>해지하기</Button>
+          <SButton variant="outline" onClick={() => {}}>취소</SButton>
+          <SButton variant="danger" onClick={() => {}}>해지하기</SButton>
         </>
       }
     >
@@ -144,28 +144,28 @@ export const Danger: Story = {
 
 export const Sizes: Story = {
   render: () => {
-    const sizes = ['sm', 'md', 'lg', 'xl'] as const;
+    const sizes = ['small', 'medium', 'large', 'xl'] as const;
     const [current, setCurrent] = useState<typeof sizes[number] | null>(null);
     return (
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         {sizes.map((s) => (
-          <Button key={s} variant="outline" size="sm" onClick={() => setCurrent(s)}>
+          <SButton key={s} variant="outline" size="small" onClick={() => setCurrent(s)}>
             {s.toUpperCase()}
-          </Button>
+          </SButton>
         ))}
         {current && (
-          <Modal
+          <SModal
             open
             onClose={() => setCurrent(null)}
             title={`Size: ${current}`}
             description="모달 크기 예시입니다."
             size={current}
-            footer={<Button onClick={() => setCurrent(null)}>닫기</Button>}
+            footer={<SButton onClick={() => setCurrent(null)}>닫기</SButton>}
           >
             <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--color-neutral-600)' }}>
               이 모달의 max-width는 <strong>{current}</strong> 사이즈입니다.
             </p>
-          </Modal>
+          </SModal>
         )}
       </div>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type IconSize = 'xs' | 'small' | 'medium' | 'large' | 'xl';
 export type IconName =
   | 'arrowUp' | 'arrowDown' | 'arrowLeft' | 'arrowRight'
   | 'chevronUp' | 'chevronDown' | 'chevronLeft' | 'chevronRight'
@@ -25,9 +25,9 @@ export interface IconProps {
 
 const SIZE_MAP: Record<IconSize, number> = {
   xs: 12,
-  sm: 14,
-  md: 16,
-  lg: 20,
+  small: 14,
+  medium: 16,
+  large: 20,
   xl: 24,
 };
 
@@ -89,9 +89,9 @@ const PATHS: Record<IconName, React.ReactNode> = {
 };
 
 /* ── Generic Icon component ── */
-export function Icon({
+export const Icon = function Icon({
   name,
-  size = 'md',
+  size = 'medium',
   color,
   className,
   style,
@@ -117,3 +117,4 @@ export function Icon({
   );
 }
 
+Icon.displayName = 'SIcon';

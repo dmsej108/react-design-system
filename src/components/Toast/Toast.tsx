@@ -187,8 +187,10 @@ const ToastCard: React.FC<ToastCardProps> = ({ item, onDismiss }) => {
 /* ────────────────────────────────────────────────────────── */
 /* Hook                                                        */
 /* ────────────────────────────────────────────────────────── */
+ToastProvider.displayName = 'SToastProvider';
+
 export function useToast(): ToastContextValue {
   const ctx = useContext(ToastContext);
-  if (!ctx) throw new Error('useToast must be used within <ToastProvider>');
+  if (!ctx) throw new Error('useToast must be used within <SToastProvider>');
   return ctx;
 }

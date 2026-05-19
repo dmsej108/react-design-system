@@ -24,9 +24,9 @@
 }
 
 /* ── Sizes ── */
-.sm  { max-width: 400px;  }
-.md  { max-width: 640px;  }
-.lg  { max-width: 940px;  }
+.small  { max-width: 400px;  }
+.medium  { max-width: 640px;  }
+.large  { max-width: 940px;  }
 .xl  { max-width: 1200px; }
 .full { max-width: calc(100vw - 40px); max-height: calc(100vh - 40px); }
 

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Modal.module.css';
 
-export type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
+export type ModalSize = 'small' | 'medium' | 'large' | 'xl' | 'full';
 export type ModalFooterAlign = 'left' | 'center' | 'right' | 'spaceBetween';
 
 export interface ModalProps {
@@ -40,7 +40,7 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   footer,
   footerAlign = 'right',
-  size = 'md',
+  size = 'medium',
   closeOnBackdrop = true,
   closeOnEsc = true,
   hideCloseButton = false,
@@ -120,3 +120,5 @@ export const Modal: React.FC<ModalProps> = ({
     document.body,
   );
 };
+
+Modal.displayName = 'SModal';

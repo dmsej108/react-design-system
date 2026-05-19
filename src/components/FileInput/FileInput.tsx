@@ -182,3 +182,5 @@ export const FileInput: React.FC<FileInputProps> = ({
     </div>
   );
 };
+
+FileInput.displayName = 'SFileInput';

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Card } from './Card';
-import { Button } from '../Button/Button';
-import { Badge } from '../Badge/Badge';
+import { Card as SCard } from './Card';
+import { Button as SButton } from '../Button/Button';
+import { Badge as SBadge } from '../Badge/Badge';
 
-const meta: Meta<typeof Card> = {
+const meta: Meta<typeof SCard> = {
   title: 'Components/Card',
-  component: Card,
+  component: SCard,
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -15,14 +15,14 @@ const meta: Meta<typeof Card> = {
     },
     size: {
       control: 'radio',
-      options: ['sm', 'md', 'lg'],
+      options: ['small', 'medium', 'large'],
     },
     title: { control: 'text' },
     description: { control: 'text' },
   },
   args: {
     variant: 'raised',
-    size: 'md',
+    size: 'medium',
     title: '카드 제목',
     description: '카드에 대한 간단한 설명입니다.',
     children: '카드 본문 내용이 여기에 표시됩니다.',
@@ -31,22 +31,22 @@ const meta: Meta<typeof Card> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Card>;
+type Story = StoryObj<typeof SCard>;
 
 export const Playground: Story = {};
 
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <Card variant="raised" title="Raised" description="기본 그림자 카드">
+      <SCard variant="raised" title="Raised" description="기본 그림자 카드">
         <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--color-neutral-600)' }}>카드 본문입니다.</p>
-      </Card>
-      <Card variant="flat" title="Flat" description="테두리만 있는 카드">
+      </SCard>
+      <SCard variant="flat" title="Flat" description="테두리만 있는 카드">
         <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--color-neutral-600)' }}>카드 본문입니다.</p>
-      </Card>
-      <Card variant="sunken" title="Sunken" description="배경이 들어간 카드">
+      </SCard>
+      <SCard variant="sunken" title="Sunken" description="배경이 들어간 카드">
         <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--color-neutral-600)' }}>카드 본문입니다.</p>
-      </Card>
+      </SCard>
     </div>
   ),
 };
@@ -55,7 +55,7 @@ export const WithHeaderAction: Story = {
   args: {
     title: '이번달 지출',
     description: '2026년 3월',
-    headerAction: <Badge variant="success" dot>정상</Badge>,
+    headerAction: <SBadge variant="success" dot>정상</SBadge>,
     children: (
       <p style={{ margin: 0, fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-neutral-900)' }}>
         487,500원
@@ -77,8 +77,8 @@ export const WithFooter: Story = {
     ),
     footer: (
       <div style={{ display: 'flex', gap: 8 }}>
-        <Button variant="outline" size="sm">취소</Button>
-        <Button size="sm">이체하기</Button>
+        <SButton variant="outline" size="small">취소</SButton>
+        <SButton size="small">이체하기</SButton>
       </div>
     ),
   },
@@ -87,9 +87,9 @@ export const WithFooter: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <Card size="sm" title="Small" description="작은 패딩">콘텐츠</Card>
-      <Card size="md" title="Medium" description="기본 패딩">콘텐츠</Card>
-      <Card size="lg" title="Large" description="넓은 패딩">콘텐츠</Card>
+      <SCard size="small" title="Small" description="작은 패딩">콘텐츠</SCard>
+      <SCard size="medium" title="Medium" description="기본 패딩">콘텐츠</SCard>
+      <SCard size="large" title="Large" description="넓은 패딩">콘텐츠</SCard>
     </div>
   ),
 };

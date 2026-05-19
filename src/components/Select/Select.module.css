@@ -72,9 +72,9 @@
 }
 
 /* ── Sizes ── */
-.sm .select { height: 28px; font-size: 11px; }
-.md .select { height: 32px; }
-.lg .select { height: 40px; font-size: 14px; }
+.small .select { height: 28px; font-size: 11px; }
+.medium .select { height: 32px; }
+.large .select { height: 40px; font-size: 14px; }
 
 /* ── Error state ── */
 .error .select { border-color: var(--ds-border-error); }

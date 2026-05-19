@@ -57,9 +57,9 @@
 }
 
 /* ── Sizes ── */
-.sm .input { height: 28px; font-size: 11px; }
-.md .input { height: 32px; }
-.lg .input { height: 40px; font-size: 14px; padding: 0 12px; }
+.small .input { height: 28px; font-size: 11px; }
+.medium .input { height: 32px; }
+.large .input { height: 40px; font-size: 14px; padding: 0 12px; }
 
 /* ── Error state ── */
 .error .input { border-color: var(--ds-border-error); }

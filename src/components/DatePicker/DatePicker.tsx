@@ -24,4 +24,4 @@ export const DatePicker = ({ onDateChange }:DatePickerProps) => {
 };
 
 
-DatePicker.displayName = 'DatePicker';
+DatePicker.displayName = 'SDatePicker';

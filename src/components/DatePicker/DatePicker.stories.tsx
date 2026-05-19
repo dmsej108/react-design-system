@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DatePicker } from './DatePicker';
+import { DatePicker as SDatePicker } from './DatePicker';
 
-const meta: Meta<typeof DatePicker> = {
+const meta: Meta<typeof SDatePicker> = {
   title: 'Components/DatePicker',
-  component: DatePicker,
+  component: SDatePicker,
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof DatePicker>;
+type Story = StoryObj<typeof SDatePicker>;
 
 export const Playground: Story = {};
 
 export const WithCallback: Story = {
   name: '날짜 변경 콜백',
   render: () => (
-    <DatePicker onDateChange={(date) => console.log('선택된 날짜:', date)} />
+    <SDatePicker onDateChange={(date) => console.log('선택된 날짜:', date)} />
   ),
 };

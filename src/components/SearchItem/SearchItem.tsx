@@ -57,4 +57,4 @@ export const SearchItem = ({ label, type,selectData, value, changeValue }: Searc
     );
 };
 
-SearchItem.displayName = 'SearchItem';
+SearchItem.displayName = 'SSearchItem';

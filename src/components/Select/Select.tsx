@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Select.module.css';
 
-export type SelectSize = 'sm' | 'md' | 'lg';
+export type SelectSize = 'small' | 'medium' | 'large';
 
 export interface SelectOption {
   value: string;
@@ -24,7 +24,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   (
     {
       label,
-      size = 'md',
+      size = 'medium',
       error = false,
       helperText,
       errorText,
@@ -88,4 +88,4 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   },
 );
 
-Select.displayName = 'Select';
+Select.displayName = 'SSelect';

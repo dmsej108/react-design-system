@@ -50,3 +50,5 @@ export const Typography: React.FC<TypographyProps> = ({
     </Tag>
   );
 };
+
+Typography.displayName = 'STypography';

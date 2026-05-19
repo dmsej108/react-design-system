@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Button.module.css';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
-export type ButtonSize = 'small' | 'medium' | 'large' | 'sm' | 'md' | 'lg';
+export type ButtonSize = 'small' | 'medium' | 'large';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -12,15 +12,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
 }
-
-const sizeClassMap: Record<NonNullable<ButtonProps['size']>, string> = {
-  small: styles.sm,
-  medium: styles.md,
-  large: styles.lg,
-  sm: styles.sm,
-  md: styles.md,
-  lg: styles.lg,
-};
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -41,7 +32,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const classes = [
       styles.btn,
       styles[variant],
-      sizeClassMap[size],
+      styles[size],
       fullWidth ? styles.fullWidth : '',
       className,
     ]
@@ -59,4 +50,4 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 
-Button.displayName = 'Button';
+Button.displayName = 'SButton';

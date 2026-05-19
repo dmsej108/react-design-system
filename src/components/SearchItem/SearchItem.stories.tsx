@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { SearchItem } from './SearchItem';
+import { SearchItem as SSearchItem } from './SearchItem';
 
 const sampleData = [
   { value: 'roulette', label: '룰렛' },
@@ -8,9 +8,9 @@ const sampleData = [
   { value: 'quiz', label: '퀴즈' },
 ];
 
-const meta: Meta<typeof SearchItem> = {
+const meta: Meta<typeof SSearchItem> = {
   title: 'Components/SearchItem',
-  component: SearchItem,
+  component: SSearchItem,
   tags: ['autodocs'],
   argTypes: {
     label: { control: 'text', description: '라벨 텍스트' },
@@ -30,7 +30,7 @@ const meta: Meta<typeof SearchItem> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof SearchItem>;
+type Story = StoryObj<typeof SSearchItem>;
 
 /* ── Playground ── */
 export const Playground: Story = {};
@@ -80,10 +80,10 @@ export const Interactive: Story = {
     const [value, setValue] = useState('normal');
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <SearchItem label="이벤트 명" type="input" value={value} changeValue={setValue} />
-        <SearchItem label="이벤트 유형" type="select" value={value} selectData={sampleData} changeValue={setValue} />
-        <SearchItem label="이벤트 타입" type="radio" value={value} selectData={sampleData} changeValue={setValue} />
-        <SearchItem label="이벤트 체크" type="checkbox" value={value} selectData={sampleData} changeValue={setValue} />
+        <SSearchItem label="이벤트 명" type="input" value={value} changeValue={setValue} />
+        <SSearchItem label="이벤트 유형" type="select" value={value} selectData={sampleData} changeValue={setValue} />
+        <SSearchItem label="이벤트 타입" type="radio" value={value} selectData={sampleData} changeValue={setValue} />
+        <SSearchItem label="이벤트 체크" type="checkbox" value={value} selectData={sampleData} changeValue={setValue} />
         <div>현재 값: <strong>{value}</strong></div>
       </div>
     );

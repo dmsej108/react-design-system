@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FileInput } from './FileInput';
+import { FileInput as SFileInput } from './FileInput';
 
-const meta: Meta<typeof FileInput> = {
+const meta: Meta<typeof SFileInput> = {
   title: 'Components/FileInput',
-  component: FileInput,
+  component: SFileInput,
   tags: ['autodocs'],
   argTypes: {
     label: { control: 'text' },
@@ -28,7 +28,7 @@ const meta: Meta<typeof FileInput> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof FileInput>;
+type Story = StoryObj<typeof SFileInput>;
 
 export const Playground: Story = {};
 

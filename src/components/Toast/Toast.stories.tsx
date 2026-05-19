@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { ToastProvider, useToast } from './Toast';
-import { Button } from '../Button/Button';
+import { ToastProvider as SToastProvider, useToast } from './Toast';
+import { Button as SButton } from '../Button/Button';
 
 const meta: Meta = {
   title: 'Components/Toast',
@@ -9,9 +9,9 @@ const meta: Meta = {
   parameters: { layout: 'centered' },
   decorators: [
     (Story) => (
-      <ToastProvider>
+      <SToastProvider>
         <Story />
-      </ToastProvider>
+      </SToastProvider>
     ),
   ],
 };
@@ -24,36 +24,36 @@ function ToastTriggers() {
   const toast = useToast();
   return (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
-      <Button
+      <SButton
         variant="primary"
         onClick={() => toast.success('이체가 완료되었습니다.', { message: '홍길동님 계좌로 100,000원이 이체되었습니다.' })}
       >
         Success
-      </Button>
-      <Button
+      </SButton>
+      <SButton
         variant="danger"
         onClick={() => toast.error('이체에 실패했습니다.', { message: '잔액이 부족합니다. 잔액을 확인해주세요.' })}
       >
         Error
-      </Button>
-      <Button
+      </SButton>
+      <SButton
         variant="outline"
         onClick={() => toast.warning('주의가 필요합니다.', { message: '하루 이체 한도의 90%에 도달했습니다.' })}
       >
         Warning
-      </Button>
-      <Button
+      </SButton>
+      <SButton
         variant="ghost"
         onClick={() => toast.info('공지사항', { message: '3월 10일 새벽 2시~4시 시스템 점검이 예정되어 있습니다.' })}
       >
         Info
-      </Button>
-      <Button
+      </SButton>
+      <SButton
         variant="ghost"
         onClick={() => toast.toast('알림', { message: '새로운 메시지가 도착했습니다.', variant: 'neutral' })}
       >
         Neutral
-      </Button>
+      </SButton>
     </div>
   );
 }
@@ -69,21 +69,21 @@ export const Variants: Story = {
       const toast = useToast();
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'center' }}>
-          <Button size="sm" onClick={() => toast.success('성공!', { message: '작업이 완료되었습니다.' })}>
+          <SButton size="small" onClick={() => toast.success('성공!', { message: '작업이 완료되었습니다.' })}>
             success 토스트
-          </Button>
-          <Button size="sm" variant="danger" onClick={() => toast.error('오류 발생', { message: '다시 시도해주세요.' })}>
+          </SButton>
+          <SButton size="small" variant="danger" onClick={() => toast.error('오류 발생', { message: '다시 시도해주세요.' })}>
             error 토스트
-          </Button>
-          <Button size="sm" variant="outline" onClick={() => toast.warning('경고', { message: '한도 초과 직전입니다.' })}>
+          </SButton>
+          <SButton size="small" variant="outline" onClick={() => toast.warning('경고', { message: '한도 초과 직전입니다.' })}>
             warning 토스트
-          </Button>
-          <Button size="sm" variant="ghost" onClick={() => toast.info('안내', { message: '서비스 점검 예정입니다.' })}>
+          </SButton>
+          <SButton size="small" variant="ghost" onClick={() => toast.info('안내', { message: '서비스 점검 예정입니다.' })}>
             info 토스트
-          </Button>
-          <Button size="sm" variant="ghost" onClick={() => toast.toast('알림', { variant: 'neutral' })}>
+          </SButton>
+          <SButton size="small" variant="ghost" onClick={() => toast.toast('알림', { variant: 'neutral' })}>
             neutral 토스트
-          </Button>
+          </SButton>
         </div>
       );
     }
@@ -97,7 +97,7 @@ export const Persistent: Story = {
     function PersistentDemo() {
       const toast = useToast();
       return (
-        <Button
+        <SButton
           onClick={() =>
             toast.info('중요 공지', {
               message: '닫기 버튼을 클릭할 때까지 사라지지 않습니다.',
@@ -106,7 +106,7 @@ export const Persistent: Story = {
           }
         >
           지속 토스트 열기
-        </Button>
+        </SButton>
       );
     }
     return <PersistentDemo />;
@@ -143,9 +143,9 @@ export const BankingExamples: Story = {
       return (
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
           {scenarios.map(({ label, action }) => (
-            <Button key={label} size="sm" variant="outline" onClick={action}>
+            <SButton key={label} size="small" variant="outline" onClick={action}>
               {label}
-            </Button>
+            </SButton>
           ))}
         </div>
       );
@@ -161,9 +161,9 @@ export const PositionOptions: Story = {
     return (
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
         {positions.map((pos) => (
-          <ToastProvider key={pos} position={pos}>
+          <SToastProvider key={pos} position={pos}>
             <PositionButton position={pos} />
-          </ToastProvider>
+          </SToastProvider>
         ))}
       </div>
     );
@@ -173,8 +173,8 @@ export const PositionOptions: Story = {
 function PositionButton({ position }: { position: string }) {
   const toast = useToast();
   return (
-    <Button size="sm" variant="outline" onClick={() => toast.info(position, { message: '이 위치에서 표시됩니다.' })}>
+    <SButton size="small" variant="outline" onClick={() => toast.info(position, { message: '이 위치에서 표시됩니다.' })}>
       {position}
-    </Button>
+    </SButton>
   );
 }

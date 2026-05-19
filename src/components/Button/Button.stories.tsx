@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
+import { Button as SButton } from './Button';
 
 const SendIcon = () => (
   <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -12,9 +12,9 @@ const PlusIcon = () => (
   </svg>
 );
 
-const meta: Meta<typeof Button> = {
+const meta: Meta<typeof SButton> = {
   title: 'Components/Button',
-  component: Button,
+  component: SButton,
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -43,7 +43,7 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof SButton>;
 
 /* ── Playground ── */
 export const Playground: Story = {};
@@ -52,11 +52,11 @@ export const Playground: Story = {};
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="danger">Danger</Button>
+      <SButton variant="primary">Primary</SButton>
+      <SButton variant="secondary">Secondary</SButton>
+      <SButton variant="outline">Outline</SButton>
+      <SButton variant="ghost">Ghost</SButton>
+      <SButton variant="danger">Danger</SButton>
     </div>
   ),
 };
@@ -65,9 +65,9 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-      <Button size="small">Small</Button>
-      <Button size="medium">Medium</Button>
-      <Button size="large">Large</Button>
+      <SButton size="small">Small</SButton>
+      <SButton size="medium">Medium</SButton>
+      <SButton size="large">Large</SButton>
     </div>
   ),
 };
@@ -76,9 +76,9 @@ export const Sizes: Story = {
 export const WithIcons: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-      <Button leftIcon={<SendIcon />}>이체하기</Button>
-      <Button variant="outline" rightIcon={<PlusIcon />}>추가하기</Button>
-      <Button variant="secondary" leftIcon={<PlusIcon />} rightIcon={<SendIcon />}>양쪽 아이콘</Button>
+      <SButton leftIcon={<SendIcon />}>이체하기</SButton>
+      <SButton variant="outline" rightIcon={<PlusIcon />}>추가하기</SButton>
+      <SButton variant="secondary" leftIcon={<PlusIcon />} rightIcon={<SendIcon />}>양쪽 아이콘</SButton>
     </div>
   ),
 };
@@ -87,9 +87,9 @@ export const WithIcons: Story = {
 export const States: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
-      <Button>Normal</Button>
-      <Button loading>Loading</Button>
-      <Button disabled>Disabled</Button>
+      <SButton>Normal</SButton>
+      <SButton loading>Loading</SButton>
+      <SButton disabled>Disabled</SButton>
     </div>
   ),
 };

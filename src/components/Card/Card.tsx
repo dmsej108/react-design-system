@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Card.module.css';
 
 export type CardVariant = 'flat' | 'raised' | 'sunken';
-export type CardSize = 'sm' | 'md' | 'lg';
+export type CardSize = 'small' | 'medium' | 'large';
 
 export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   variant?: CardVariant;
@@ -15,7 +15,7 @@ export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 't
 
 export const Card: React.FC<CardProps> = ({
   variant = 'raised',
-  size = 'md',
+  size = 'medium',
   title,
   description,
   headerAction,
@@ -46,3 +46,5 @@ export const Card: React.FC<CardProps> = ({
     </div>
   );
 };
+
+Card.displayName = 'SCard';

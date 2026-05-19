@@ -27,7 +27,7 @@
 }
 
 /* ── Sizes ── */
-.sm {
+.small {
   padding: 0 10px;
   height: 28px;
   border-color: var(--ds-border-strong);
@@ -36,7 +36,7 @@
   color: var(--ds-text-2);
 }
 
-.md {
+.medium {
   padding: 0 14px;
   height: 36px;
   border-color: var(--ds-border);
@@ -45,7 +45,7 @@
   color: var(--ds-text-2);
 }
 
-.lg {
+.large {
   min-width: 140px;
   padding: 0 18px;
   height: 44px;

@@ -9,7 +9,7 @@ export type BadgeVariant =
   | 'error'
   | 'info'
   | 'neutral';
-export type BadgeSize = 'sm' | 'md' | 'lg';
+export type BadgeSize = 'small' | 'medium' | 'large';
 export type BadgeType = 'a' | 'b' | 'c'
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -22,7 +22,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 export const Badge: React.FC<BadgeProps> = ({
   variant = 'primary',
-  size = 'md',
+  size = 'medium',
   dot = false,
   children,
   contorl='b',
@@ -42,3 +42,5 @@ export const Badge: React.FC<BadgeProps> = ({
     </span>
   );
 };
+
+Badge.displayName = 'SBadge';

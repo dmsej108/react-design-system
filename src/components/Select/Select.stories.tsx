@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Select } from './Select';
+import { Select as SSelect } from './Select';
 
 const BANK_OPTIONS = [
   { value: 'star', label: '스타뱅크' },
@@ -9,12 +9,12 @@ const BANK_OPTIONS = [
   { value: 'hana', label: '하나은행' },
 ];
 
-const meta: Meta<typeof Select> = {
+const meta: Meta<typeof SSelect> = {
   title: 'Components/Select',
-  component: Select,
+  component: SSelect,
   tags: ['autodocs'],
   argTypes: {
-    size: { control: 'radio', options: ['sm', 'md', 'lg'] },
+    size: { control: 'radio', options: ['small', 'medium', 'large'] },
     error: { control: 'boolean' },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
@@ -23,7 +23,7 @@ const meta: Meta<typeof Select> = {
     label: '은행 선택',
     placeholder: '선택하세요',
     options: BANK_OPTIONS,
-    size: 'md',
+    size: 'medium',
     error: false,
     disabled: false,
     required: false,
@@ -31,16 +31,16 @@ const meta: Meta<typeof Select> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Select>;
+type Story = StoryObj<typeof SSelect>;
 
 export const Playground: Story = {};
 
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 320 }}>
-      <Select label="Small" size="sm" options={BANK_OPTIONS} placeholder="선택하세요" />
-      <Select label="Medium" size="md" options={BANK_OPTIONS} placeholder="선택하세요" />
-      <Select label="Large" size="lg" options={BANK_OPTIONS} placeholder="선택하세요" />
+      <SSelect label="Small" size="small" options={BANK_OPTIONS} placeholder="선택하세요" />
+      <SSelect label="Medium" size="medium" options={BANK_OPTIONS} placeholder="선택하세요" />
+      <SSelect label="Large" size="large" options={BANK_OPTIONS} placeholder="선택하세요" />
     </div>
   ),
 };
@@ -48,7 +48,7 @@ export const Sizes: Story = {
 export const WithError: Story = {
   render: () => (
     <div style={{ maxWidth: 320 }}>
-      <Select
+      <SSelect
         label="은행"
         options={BANK_OPTIONS}
         placeholder="선택하세요"
@@ -63,7 +63,7 @@ export const WithError: Story = {
 export const WithHelperText: Story = {
   render: () => (
     <div style={{ maxWidth: 320 }}>
-      <Select
+      <SSelect
         label="이체 은행"
         options={BANK_OPTIONS}
         placeholder="선택하세요"
@@ -76,7 +76,7 @@ export const WithHelperText: Story = {
 export const Disabled: Story = {
   render: () => (
     <div style={{ maxWidth: 320 }}>
-      <Select label="은행 (비활성)" options={BANK_OPTIONS} placeholder="선택 불가" disabled />
+      <SSelect label="은행 (비활성)" options={BANK_OPTIONS} placeholder="선택 불가" disabled />
     </div>
   ),
 };
@@ -85,7 +85,7 @@ export const BannerPositionExample: Story = {
   name: '배너 노출 위치 예시',
   render: () => (
     <div style={{ maxWidth: 320 }}>
-      <Select
+      <SSelect
         label="노출 위치"
         options={[
           { value: 'main-top', label: '메인 상단' },

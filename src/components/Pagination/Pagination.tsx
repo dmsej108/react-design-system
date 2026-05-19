@@ -66,4 +66,4 @@ export const Pagination = ({itemCount=0, cntPerPage=0, currentPage=0, onChangedP
 };
 
 
-Pagination.displayName = 'Pagination';
+Pagination.displayName = 'SPagination';

@@ -9,9 +9,9 @@
 .raised { box-shadow: var(--shadow-sm); }
 .sunken { background-color: var(--color-neutral-50); box-shadow: none; }
 
-.sm { padding: var(--space-4); }
-.md { padding: var(--space-6); }
-.lg { padding: var(--space-8); }
+.small { padding: var(--space-4); }
+.medium { padding: var(--space-6); }
+.large { padding: var(--space-8); }
 
 .header {
   display: flex;

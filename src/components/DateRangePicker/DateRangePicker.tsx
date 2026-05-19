@@ -55,4 +55,4 @@ export const DateRangePicker = ({ label = '기간검색', onDateChange }: DateRa
 };
 
 
-DateRangePicker.displayName = 'DateRangePicker';
+DateRangePicker.displayName = 'SDateRangePicker';
