@@ -41,3 +41,6 @@ export type { PaginationProps as SPaginationProps } from './components/Paginatio
 
 export { BaseButton as SBaseButton } from './components/BaseButton';
 export type { BaseButtonProps as SBaseButtonProps } from './components/BaseButton';
+
+export { Radio as SRadio, RadioGroup as SRadioGroup } from './components/Radio';
+export type { RadioProps as SRadioProps, RadioGroupProps as SRadioGroupProps, RadioOption as SRadioOption, RadioSize as SRadioSize } from './components/Radio';
