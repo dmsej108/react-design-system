@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './components/Button/Button';
-import { Badge } from './components/Badge/Badge';
-import { Card } from './components/Card/Card';
-import { Input } from './components/Input/Input';
-import { Select } from './components/Select/Select';
-import { FileInput } from './components/FileInput/FileInput';
-import { Modal } from './components/Modal/Modal';
-import { ToastProvider, useToast } from './components/Toast/Toast';
-import { Typography } from './components/Typography/Typography';
-import { Icon } from './components/Icon/Icon';
+import { Button as SButton } from './components/Button/Button';
+import { Badge as SBadge } from './components/Badge/Badge';
+import { Card as SCard } from './components/Card/Card';
+import { Input as SInput } from './components/Input/Input';
+import { Select as SSelect } from './components/Select/Select';
+import { FileInput as SFileInput } from './components/FileInput/FileInput';
+import { Modal as SModal } from './components/Modal/Modal';
+import { ToastProvider as SToastProvider, useToast } from './components/Toast/Toast';
+import { Typography as STypography } from './components/Typography/Typography';
+import { Icon as SIcon } from './components/Icon/Icon';
+import { Pagination as SPagination } from './components/Pagination/Pagination';
 
 /* ── Shared section wrapper ── */
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
@@ -32,9 +33,9 @@ const meta: Meta = {
   parameters: { layout: 'padded' },
   decorators: [
     (Story) => (
-      <ToastProvider position="topRight">
+      <SToastProvider position="topRight">
         <Story />
-      </ToastProvider>
+      </SToastProvider>
     ),
   ],
 };
@@ -49,46 +50,47 @@ function ShowcaseAll() {
   const [inputVal, setInputVal] = useState('');
   const [selectVal, setSelectVal] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalSize, setModalSize] = useState<'sm' | 'md' | 'lg'>('md');
+  const [modalSize, setModalSize] = useState<'small' | 'medium' | 'large'>('medium');
   const [fileList, setFileList] = useState<File[]>([]);
+  const [page, setPage] = useState(1);
   const toast = useToast();
 
   return (
     <div style={{ maxWidth: 900, margin: '0 auto' }}>
       <div style={{ marginBottom: 32 }}>
-        <Typography variant="h3">디자인 시스템</Typography>
-        <Typography variant="body2" color="muted">@starbanking/design-system 컴포넌트 쇼케이스</Typography>
+        <STypography variant="h3">디자인 시스템</STypography>
+        <STypography variant="body2" color="muted">@starbanking/design-system 컴포넌트 쇼케이스</STypography>
       </div>
 
       {/* Button */}
       <Section title="Button">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div>
-            <Typography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Variants</Typography>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Variants</STypography>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              <Button variant="primary">Primary</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="danger">Danger</Button>
-              <Button disabled>Disabled</Button>
-              <Button loading>Loading</Button>
+              <SButton variant="primary">Primary</SButton>
+              <SButton variant="secondary">Secondary</SButton>
+              <SButton variant="outline">Outline</SButton>
+              <SButton variant="ghost">Ghost</SButton>
+              <SButton variant="danger">Danger</SButton>
+              <SButton disabled>Disabled</SButton>
+              <SButton loading>Loading</SButton>
             </div>
           </div>
           <div>
-            <Typography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Sizes</Typography>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Sizes</STypography>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-              <Button size="sm">Small</Button>
-              <Button size="md">Medium</Button>
-              <Button size="lg">Large</Button>
+              <SButton size="small">Small</SButton>
+              <SButton size="medium">Medium</SButton>
+              <SButton size="large">Large</SButton>
             </div>
           </div>
           <div>
-            <Typography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>With Icons</Typography>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>With Icons</STypography>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              <Button leftIcon={<Icon name="send" />}>이체하기</Button>
-              <Button variant="outline" rightIcon={<Icon name="download" />}>다운로드</Button>
-              <Button variant="secondary" leftIcon={<Icon name="plus" />}>추가</Button>
+              <SButton leftIcon={<SIcon name="send" size="small" />}>이체하기</SButton>
+              <SButton variant="outline" rightIcon={<SIcon name="download" size="small" />}>다운로드</SButton>
+              <SButton variant="secondary" leftIcon={<SIcon name="plus" size="small" />}>추가</SButton>
             </div>
           </div>
         </div>
@@ -97,133 +99,138 @@ function ShowcaseAll() {
       {/* Badge */}
       <Section title="Badge">
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
-          <Badge variant="primary">Primary</Badge>
-          <Badge variant="secondary">Secondary</Badge>
-          <Badge variant="success" dot>완료</Badge>
-          <Badge variant="warning" dot>처리중</Badge>
-          <Badge variant="error" dot>실패</Badge>
-          <Badge variant="info">정보</Badge>
-          <Badge variant="neutral">중립</Badge>
-          <Badge variant="success" size="lg">Large</Badge>
-          <Badge variant="neutral" size="sm">Small</Badge>
+          <SBadge variant="primary">Primary</SBadge>
+          <SBadge variant="secondary">Secondary</SBadge>
+          <SBadge variant="success" dot>완료</SBadge>
+          <SBadge variant="warning" dot>처리중</SBadge>
+          <SBadge variant="error" dot>실패</SBadge>
+          <SBadge variant="info">정보</SBadge>
+          <SBadge variant="neutral">중립</SBadge>
+          <SBadge variant="success" size="large">Large</SBadge>
+          <SBadge variant="neutral" size="small">Small</SBadge>
         </div>
       </Section>
 
       {/* Input */}
       <Section title="Input">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16 }}>
-          <Input label="기본 입력" placeholder="텍스트를 입력하세요" />
-          <Input label="검색" placeholder="검색어 입력" prefix={<Icon name="search" />} value={inputVal} onChange={(e) => setInputVal(e.target.value)} />
-          <Input label="필수 항목" placeholder="필수 값" required />
-          <Input label="오류 상태" placeholder="잘못된 값" error errorText="올바른 형식으로 입력해주세요." />
-          <Input label="도움말" placeholder="입력" helperText="8자 이상 입력해주세요." />
-          <Input label="비활성화" placeholder="입력 불가" disabled />
+          <SInput label="기본 입력" placeholder="텍스트를 입력하세요" />
+          <SInput label="검색" placeholder="검색어 입력" prefix={<SIcon name="search" size="small" />} value={inputVal} onChange={(e) => setInputVal(e.target.value)} />
+          <SInput label="필수 항목" placeholder="필수 값" required />
+          <SInput label="오류 상태" placeholder="잘못된 값" error errorText="올바른 형식으로 입력해주세요." />
+          <SInput label="도움말" placeholder="입력" helperText="8자 이상 입력해주세요." />
+          <SInput label="비활성화" placeholder="입력 불가" disabled />
         </div>
       </Section>
 
       {/* Select */}
       <Section title="Select">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16 }}>
-          <Select
+          <SSelect
             label="기본 선택" placeholder="선택하세요"
             options={[{ value: 'option1', label: '옵션 1' }, { value: 'option2', label: '옵션 2' }, { value: 'option3', label: '옵션 3' }]}
             value={selectVal} onChange={(e) => setSelectVal(e.target.value)}
           />
-          <Select label="Small" size="sm" placeholder="선택" options={[{ value: 'a', label: 'Small A' }, { value: 'b', label: 'Small B' }]} />
-          <Select label="Large" size="lg" placeholder="선택" options={[{ value: 'a', label: 'Large A' }, { value: 'b', label: 'Large B' }]} />
-          <Select label="오류 상태" placeholder="선택하세요" error errorText="항목을 선택해주세요." options={[{ value: 'a', label: '옵션 A' }]} />
-          <Select label="도움말" placeholder="선택" helperText="하나를 선택해주세요." options={[{ value: 'a', label: '옵션 A' }, { value: 'b', label: '옵션 B' }]} />
-          <Select label="비활성화" placeholder="선택 불가" disabled options={[{ value: 'a', label: '옵션 A' }]} />
+          <SSelect label="Small" size="small" placeholder="선택" options={[{ value: 'a', label: 'Small A' }, { value: 'b', label: 'Small B' }]} />
+          <SSelect label="Large" size="large" placeholder="선택" options={[{ value: 'a', label: 'Large A' }, { value: 'b', label: 'Large B' }]} />
+          <SSelect label="오류 상태" placeholder="선택하세요" error errorText="항목을 선택해주세요." options={[{ value: 'a', label: '옵션 A' }]} />
+          <SSelect label="도움말" placeholder="선택" helperText="하나를 선택해주세요." options={[{ value: 'a', label: '옵션 A' }, { value: 'b', label: '옵션 B' }]} />
+          <SSelect label="비활성화" placeholder="선택 불가" disabled options={[{ value: 'a', label: '옵션 A' }]} />
         </div>
       </Section>
 
       {/* FileInput */}
       <Section title="FileInput">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 520 }}>
-          <FileInput label="기본 파일 업로드" helperText="모든 파일 형식 허용" onChange={setFileList} />
-          <FileInput label="이미지 전용" accept=".jpg,.jpeg,.png,.webp" maxSize={5 * 1024 * 1024} helperText="JPG, PNG, WEBP · 최대 5MB" onChange={setFileList} />
+          <SFileInput label="기본 파일 업로드" helperText="모든 파일 형식 허용" onChange={setFileList} />
+          <SFileInput label="이미지 전용" accept=".jpg,.jpeg,.png,.webp" maxSize={5 * 1024 * 1024} helperText="JPG, PNG, WEBP · 최대 5MB" onChange={setFileList} />
           {fileList.length > 0 && (
-            <Typography variant="caption" color="muted">선택된 파일: {fileList.map((f) => f.name).join(', ')}</Typography>
+            <STypography variant="caption" color="muted">선택된 파일: {fileList.map((f) => f.name).join(', ')}</STypography>
           )}
-          <FileInput label="비활성화" disabled onChange={() => {}} />
+          <SFileInput label="비활성화" disabled onChange={() => {}} />
         </div>
       </Section>
 
       {/* Modal */}
       <Section title="Modal">
         <div style={{ display: 'flex', gap: 8 }}>
-          {(['sm', 'md', 'lg'] as const).map((size) => (
-            <Button key={size} variant="outline" onClick={() => { setModalSize(size); setModalOpen(true); }}>
+          {(['small', 'medium', 'large'] as const).map((size) => (
+            <SButton key={size} variant="outline" onClick={() => { setModalSize(size); setModalOpen(true); }}>
               {size.toUpperCase()} 모달 열기
-            </Button>
+            </SButton>
           ))}
         </div>
-        <Modal
+        <SModal
           open={modalOpen} onClose={() => setModalOpen(false)}
           title={`${modalSize.toUpperCase()} 모달`} size={modalSize}
           footer={
             <div style={{ display: 'flex', gap: 8 }}>
-              <Button variant="outline" onClick={() => setModalOpen(false)}>취소</Button>
-              <Button onClick={() => setModalOpen(false)}>확인</Button>
+              <SButton variant="outline" onClick={() => setModalOpen(false)}>취소</SButton>
+              <SButton onClick={() => setModalOpen(false)}>확인</SButton>
             </div>
           }
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <Typography variant="body2">모달 컴포넌트입니다. 사이즈는 sm / md / lg 를 지원합니다.</Typography>
-            <Input label="모달 내부 입력" placeholder="텍스트 입력" />
-            <Select label="모달 내부 선택" placeholder="선택하세요" options={[{ value: '1', label: '옵션 1' }, { value: '2', label: '옵션 2' }]} />
+            <STypography variant="body2">모달 컴포넌트입니다. 사이즈는 small / medium / large 를 지원합니다.</STypography>
+            <SInput label="모달 내부 입력" placeholder="텍스트 입력" />
+            <SSelect label="모달 내부 선택" placeholder="선택하세요" options={[{ value: '1', label: '옵션 1' }, { value: '2', label: '옵션 2' }]} />
           </div>
-        </Modal>
+        </SModal>
       </Section>
 
       {/* Toast */}
       <Section title="Toast">
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          <Button variant="primary" onClick={() => toast.success('성공!', { message: '작업이 성공적으로 완료되었습니다.' })}>Success Toast</Button>
-          <Button variant="danger" onClick={() => toast.error('오류 발생', { message: '처리 중 문제가 발생했습니다.' })}>Error Toast</Button>
-          <Button variant="outline" onClick={() => toast.warning('주의', { message: '이 작업은 되돌릴 수 없습니다.' })}>Warning Toast</Button>
-          <Button variant="ghost" onClick={() => toast.info('안내', { message: '새로운 업데이트가 있습니다.' })}>Info Toast</Button>
+          <SButton variant="primary" onClick={() => toast.success('성공!', { message: '작업이 성공적으로 완료되었습니다.' })}>Success Toast</SButton>
+          <SButton variant="danger" onClick={() => toast.error('오류 발생', { message: '처리 중 문제가 발생했습니다.' })}>Error Toast</SButton>
+          <SButton variant="outline" onClick={() => toast.warning('주의', { message: '이 작업은 되돌릴 수 없습니다.' })}>Warning Toast</SButton>
+          <SButton variant="ghost" onClick={() => toast.info('안내', { message: '새로운 업데이트가 있습니다.' })}>Info Toast</SButton>
         </div>
       </Section>
 
       {/* Card */}
       <Section title="Card">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 16 }}>
-          <Card variant="raised" title="Raised Card" description="기본 그림자 카드입니다.">
-            <Typography variant="body2">카드 본문 내용이 여기에 들어갑니다.</Typography>
-          </Card>
-          <Card variant="flat" title="Flat Card" description="테두리만 있는 플랫 카드입니다.">
-            <Typography variant="body2">카드 본문 내용이 여기에 들어갑니다.</Typography>
-          </Card>
-          <Card
+          <SCard variant="raised" title="Raised Card" description="기본 그림자 카드입니다.">
+            <STypography variant="body2">카드 본문 내용이 여기에 들어갑니다.</STypography>
+          </SCard>
+          <SCard variant="flat" title="Flat Card" description="테두리만 있는 플랫 카드입니다.">
+            <STypography variant="body2">카드 본문 내용이 여기에 들어갑니다.</STypography>
+          </SCard>
+          <SCard
             variant="raised" title="With Footer" description="푸터가 있는 카드입니다."
             footer={
               <div style={{ display: 'flex', gap: 8 }}>
-                <Button size="sm" variant="outline">취소</Button>
-                <Button size="sm">확인</Button>
+                <SButton size="small" variant="outline">취소</SButton>
+                <SButton size="small">확인</SButton>
               </div>
             }
           >
-            <Typography variant="body2">카드 본문 내용이 여기에 들어갑니다.</Typography>
-          </Card>
+            <STypography variant="body2">카드 본문 내용이 여기에 들어갑니다.</STypography>
+          </SCard>
         </div>
+      </Section>
+
+      {/* Pagination */}
+      <Section title="Pagination">
+        <SPagination itemCount={100} cntPerPage={10} currentPage={page} onChangedPage={(p) => setPage(p)} />
       </Section>
 
       {/* Typography */}
       <Section title="Typography">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const).map((v) => (
-            <Typography key={v} variant={v}>{v.toUpperCase()} — StarBanking 디자인 시스템</Typography>
+            <STypography key={v} variant={v}>{v.toUpperCase()} — StarBanking 디자인 시스템</STypography>
           ))}
           <div style={{ height: 8 }} />
-          <Typography variant="body1">Body1 — 본문 텍스트. StarBanking 디자인 시스템은 뱅킹 서비스에 최적화된 React 컴포넌트 라이브러리입니다.</Typography>
-          <Typography variant="body2">Body2 — 보조 본문 텍스트. 좀 더 작은 본문에 사용됩니다.</Typography>
-          <Typography variant="caption">Caption — 보조 설명 텍스트</Typography>
-          <Typography variant="overline">Overline — 섹션 레이블</Typography>
-          <Typography variant="label">Label — 폼 레이블</Typography>
+          <STypography variant="body1">Body1 — 본문 텍스트. StarBanking 디자인 시스템은 뱅킹 서비스에 최적화된 React 컴포넌트 라이브러리입니다.</STypography>
+          <STypography variant="body2">Body2 — 보조 본문 텍스트. 좀 더 작은 본문에 사용됩니다.</STypography>
+          <STypography variant="caption">Caption — 보조 설명 텍스트</STypography>
+          <STypography variant="overline">Overline — 섹션 레이블</STypography>
+          <STypography variant="label">Label — 폼 레이블</STypography>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             {(['primary', 'secondary', 'success', 'warning', 'error', 'muted'] as const).map((c) => (
-              <Typography key={c} variant="label" color={c}>{c}</Typography>
+              <STypography key={c} variant="label" color={c}>{c}</STypography>
             ))}
           </div>
         </div>
@@ -234,46 +241,50 @@ function ShowcaseAll() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           {[
             {
-              label: 'Brand / UI', colors: [
-                { name: 'Nav / Primary', value: '#253349' },
-                { name: 'Secondary (Button)', value: '#ffcc00' },
-                { name: 'Highlight', value: '#ffbc00' },
-                { name: 'Badge Yellow', value: '#fed700' },
+              label: 'KB Brand', colors: [
+                { name: 'Yellow Positive', value: '#FFBC00' },
+                { name: 'Yellow Negative', value: '#FFCC00' },
+                { name: 'Gray', value: '#60584C' },
+                { name: 'Dark Gray', value: '#545045' },
+                { name: 'Gold', value: '#C5A028' },
+                { name: 'Silver', value: '#A8AAAD' },
+              ],
+            },
+            {
+              label: 'Button / Surface', colors: [
+                { name: 'Primary (KB Yellow)', value: '#FFBC00' },
+                { name: 'Secondary (Navy)', value: '#253349' },
+                { name: 'Danger', value: '#ff3232' },
               ],
             },
             {
               label: 'Semantic', colors: [
-                { name: 'Point / Link', value: '#287eff' },
-                { name: 'Error / Danger', value: '#ff3232' },
-                { name: 'Hover bg', value: '#f2f2f2' },
-                { name: 'Base bg', value: '#f7f7f7' },
+                { name: 'Success', value: '#36b37e' },
+                { name: 'Warning', value: '#ff8b00' },
+                { name: 'Error', value: '#ff5630' },
+                { name: 'Info', value: '#2563eb' },
               ],
             },
             {
               label: 'Text', colors: [
-                { name: 'Strong text', value: '#222' },
-                { name: 'Base text', value: '#444' },
-                { name: 'Muted text', value: '#767676' },
-                { name: 'Placeholder', value: '#999' },
-                { name: 'Disabled text', value: '#ababab' },
+                { name: 'Strong', value: '#222222' },
+                { name: 'Base', value: '#444444' },
+                { name: 'Muted', value: '#767676' },
+                { name: 'Placeholder', value: '#999999' },
+                { name: 'Disabled', value: '#ababab' },
               ],
             },
             {
-              label: 'Border / Line', colors: [
-                { name: 'Base border', value: '#d2d2d2' },
-                { name: 'Light border', value: '#ebebeb' },
-              ],
-            },
-            {
-              label: 'Brand Brown', colors: [
-                { name: 'Brown Light', value: '#a8917b' },
-                { name: 'Brown Base', value: '#766554' },
-                { name: 'Brown Dark', value: '#4e4238' },
+              label: 'Border / Surface', colors: [
+                { name: 'Border', value: '#d2d2d2' },
+                { name: 'Border Light', value: '#ebebeb' },
+                { name: 'Surface Hover', value: '#f2f2f2' },
+                { name: 'Surface', value: '#ffffff' },
               ],
             },
           ].map(({ label, colors }) => (
             <div key={label}>
-              <Typography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>{label}</Typography>
+              <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>{label}</STypography>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 {colors.map(({ name, value }) => (
                   <div key={name} style={{ minWidth: 100, flex: '0 0 auto' }}>
@@ -304,31 +315,31 @@ export const Buttons: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div>
-        <Typography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Variants</Typography>
+        <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Variants</STypography>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          <Button variant="primary">Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="danger">Danger</Button>
-          <Button disabled>Disabled</Button>
-          <Button loading>Loading</Button>
+          <SButton variant="primary">Primary</SButton>
+          <SButton variant="secondary">Secondary</SButton>
+          <SButton variant="outline">Outline</SButton>
+          <SButton variant="ghost">Ghost</SButton>
+          <SButton variant="danger">Danger</SButton>
+          <SButton disabled>Disabled</SButton>
+          <SButton loading>Loading</SButton>
         </div>
       </div>
       <div>
-        <Typography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Sizes</Typography>
+        <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Sizes</STypography>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <Button size="sm">Small</Button>
-          <Button size="md">Medium</Button>
-          <Button size="lg">Large</Button>
+          <SButton size="small">Small</SButton>
+          <SButton size="medium">Medium</SButton>
+          <SButton size="large">Large</SButton>
         </div>
       </div>
       <div>
-        <Typography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>With Icons</Typography>
+        <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>With Icons</STypography>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          <Button leftIcon={<Icon name="send" />}>이체하기</Button>
-          <Button variant="outline" rightIcon={<Icon name="download" />}>다운로드</Button>
-          <Button variant="secondary" leftIcon={<Icon name="plus" />}>추가</Button>
+          <SButton leftIcon={<SIcon name="send" size="small" />}>이체하기</SButton>
+          <SButton variant="outline" rightIcon={<SIcon name="download" size="small" />}>다운로드</SButton>
+          <SButton variant="secondary" leftIcon={<SIcon name="plus" size="small" />}>추가</SButton>
         </div>
       </div>
     </div>
@@ -339,15 +350,15 @@ export const Badges: Story = {
   name: 'Badge — 전체',
   render: () => (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
-      <Badge variant="primary">Primary</Badge>
-      <Badge variant="secondary">Secondary</Badge>
-      <Badge variant="success" dot>완료</Badge>
-      <Badge variant="warning" dot>처리중</Badge>
-      <Badge variant="error" dot>실패</Badge>
-      <Badge variant="info">정보</Badge>
-      <Badge variant="neutral">중립</Badge>
-      <Badge variant="success" size="lg">Large</Badge>
-      <Badge variant="neutral" size="sm">Small</Badge>
+      <SBadge variant="primary">Primary</SBadge>
+      <SBadge variant="secondary">Secondary</SBadge>
+      <SBadge variant="success" dot>완료</SBadge>
+      <SBadge variant="warning" dot>처리중</SBadge>
+      <SBadge variant="error" dot>실패</SBadge>
+      <SBadge variant="info">정보</SBadge>
+      <SBadge variant="neutral">중립</SBadge>
+      <SBadge variant="success" size="large">Large</SBadge>
+      <SBadge variant="neutral" size="small">Small</SBadge>
     </div>
   ),
 };
@@ -359,12 +370,12 @@ export const Inputs: Story = {
       const [val, setVal] = useState('');
       return (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16 }}>
-          <Input label="기본 입력" placeholder="텍스트를 입력하세요" />
-          <Input label="검색" placeholder="검색어 입력" prefix={<Icon name="search" />} value={val} onChange={(e) => setVal(e.target.value)} />
-          <Input label="필수 항목" placeholder="필수 값" required />
-          <Input label="오류 상태" placeholder="잘못된 값" error errorText="올바른 형식으로 입력해주세요." />
-          <Input label="도움말" placeholder="입력" helperText="8자 이상 입력해주세요." />
-          <Input label="비활성화" placeholder="입력 불가" disabled />
+          <SInput label="기본 입력" placeholder="텍스트를 입력하세요" />
+          <SInput label="검색" placeholder="검색어 입력" prefix={<SIcon name="search" size="small" />} value={val} onChange={(e) => setVal(e.target.value)} />
+          <SInput label="필수 항목" placeholder="필수 값" required />
+          <SInput label="오류 상태" placeholder="잘못된 값" error errorText="올바른 형식으로 입력해주세요." />
+          <SInput label="도움말" placeholder="입력" helperText="8자 이상 입력해주세요." />
+          <SInput label="비활성화" placeholder="입력 불가" disabled />
         </div>
       );
     }
@@ -379,16 +390,16 @@ export const Selects: Story = {
       const [val, setVal] = useState('');
       return (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16 }}>
-          <Select
+          <SSelect
             label="기본 선택" placeholder="선택하세요"
             options={[{ value: 'option1', label: '옵션 1' }, { value: 'option2', label: '옵션 2' }, { value: 'option3', label: '옵션 3' }]}
             value={val} onChange={(e) => setVal(e.target.value)}
           />
-          <Select label="Small" size="sm" placeholder="선택" options={[{ value: 'a', label: 'Small A' }, { value: 'b', label: 'Small B' }]} />
-          <Select label="Large" size="lg" placeholder="선택" options={[{ value: 'a', label: 'Large A' }, { value: 'b', label: 'Large B' }]} />
-          <Select label="오류 상태" placeholder="선택하세요" error errorText="항목을 선택해주세요." options={[{ value: 'a', label: '옵션 A' }]} />
-          <Select label="도움말" placeholder="선택" helperText="하나를 선택해주세요." options={[{ value: 'a', label: '옵션 A' }, { value: 'b', label: '옵션 B' }]} />
-          <Select label="비활성화" placeholder="선택 불가" disabled options={[{ value: 'a', label: '옵션 A' }]} />
+          <SSelect label="Small" size="small" placeholder="선택" options={[{ value: 'a', label: 'Small A' }, { value: 'b', label: 'Small B' }]} />
+          <SSelect label="Large" size="large" placeholder="선택" options={[{ value: 'a', label: 'Large A' }, { value: 'b', label: 'Large B' }]} />
+          <SSelect label="오류 상태" placeholder="선택하세요" error errorText="항목을 선택해주세요." options={[{ value: 'a', label: '옵션 A' }]} />
+          <SSelect label="도움말" placeholder="선택" helperText="하나를 선택해주세요." options={[{ value: 'a', label: '옵션 A' }, { value: 'b', label: '옵션 B' }]} />
+          <SSelect label="비활성화" placeholder="선택 불가" disabled options={[{ value: 'a', label: '옵션 A' }]} />
         </div>
       );
     }
@@ -403,12 +414,12 @@ export const FileInputs: Story = {
       const [files, setFiles] = useState<File[]>([]);
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 520 }}>
-          <FileInput label="기본 파일 업로드" helperText="모든 파일 형식 허용" onChange={setFiles} />
-          <FileInput label="이미지 전용" accept=".jpg,.jpeg,.png,.webp" maxSize={5 * 1024 * 1024} helperText="JPG, PNG, WEBP · 최대 5MB" onChange={setFiles} />
+          <SFileInput label="기본 파일 업로드" helperText="모든 파일 형식 허용" onChange={setFiles} />
+          <SFileInput label="이미지 전용" accept=".jpg,.jpeg,.png,.webp" maxSize={5 * 1024 * 1024} helperText="JPG, PNG, WEBP · 최대 5MB" onChange={setFiles} />
           {files.length > 0 && (
-            <Typography variant="caption" color="muted">선택된 파일: {files.map((f) => f.name).join(', ')}</Typography>
+            <STypography variant="caption" color="muted">선택된 파일: {files.map((f) => f.name).join(', ')}</STypography>
           )}
-          <FileInput label="비활성화" disabled onChange={() => {}} />
+          <SFileInput label="비활성화" disabled onChange={() => {}} />
         </div>
       );
     }
@@ -421,32 +432,32 @@ export const Modals: Story = {
   render: () => {
     function ModalDemo() {
       const [open, setOpen] = useState(false);
-      const [size, setSize] = useState<'sm' | 'md' | 'lg'>('md');
+      const [size, setSize] = useState<'small' | 'medium' | 'large'>('medium');
       return (
         <>
           <div style={{ display: 'flex', gap: 8 }}>
-            {(['sm', 'md', 'lg'] as const).map((s) => (
-              <Button key={s} variant="outline" onClick={() => { setSize(s); setOpen(true); }}>
+            {(['small', 'medium', 'large'] as const).map((s) => (
+              <SButton key={s} variant="outline" onClick={() => { setSize(s); setOpen(true); }}>
                 {s.toUpperCase()} 모달 열기
-              </Button>
+              </SButton>
             ))}
           </div>
-          <Modal
+          <SModal
             open={open} onClose={() => setOpen(false)}
             title={`${size.toUpperCase()} 모달`} size={size}
             footer={
               <div style={{ display: 'flex', gap: 8 }}>
-                <Button variant="outline" onClick={() => setOpen(false)}>취소</Button>
-                <Button onClick={() => setOpen(false)}>확인</Button>
+                <SButton variant="outline" onClick={() => setOpen(false)}>취소</SButton>
+                <SButton onClick={() => setOpen(false)}>확인</SButton>
               </div>
             }
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <Typography variant="body2">모달 컴포넌트입니다. 사이즈는 sm / md / lg 를 지원합니다.</Typography>
-              <Input label="모달 내부 입력" placeholder="텍스트 입력" />
-              <Select label="모달 내부 선택" placeholder="선택하세요" options={[{ value: '1', label: '옵션 1' }, { value: '2', label: '옵션 2' }]} />
+              <STypography variant="body2">모달 컴포넌트입니다. 사이즈는 small / medium / large 를 지원합니다.</STypography>
+              <SInput label="모달 내부 입력" placeholder="텍스트 입력" />
+              <SSelect label="모달 내부 선택" placeholder="선택하세요" options={[{ value: '1', label: '옵션 1' }, { value: '2', label: '옵션 2' }]} />
             </div>
-          </Modal>
+          </SModal>
         </>
       );
     }
@@ -461,10 +472,10 @@ export const Toasts: Story = {
       const toast = useToast();
       return (
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          <Button variant="primary" onClick={() => toast.success('성공!', { message: '작업이 성공적으로 완료되었습니다.' })}>Success Toast</Button>
-          <Button variant="danger" onClick={() => toast.error('오류 발생', { message: '처리 중 문제가 발생했습니다.' })}>Error Toast</Button>
-          <Button variant="outline" onClick={() => toast.warning('주의', { message: '이 작업은 되돌릴 수 없습니다.' })}>Warning Toast</Button>
-          <Button variant="ghost" onClick={() => toast.info('안내', { message: '새로운 업데이트가 있습니다.' })}>Info Toast</Button>
+          <SButton variant="primary" onClick={() => toast.success('성공!', { message: '작업이 성공적으로 완료되었습니다.' })}>Success Toast</SButton>
+          <SButton variant="danger" onClick={() => toast.error('오류 발생', { message: '처리 중 문제가 발생했습니다.' })}>Error Toast</SButton>
+          <SButton variant="outline" onClick={() => toast.warning('주의', { message: '이 작업은 되돌릴 수 없습니다.' })}>Warning Toast</SButton>
+          <SButton variant="ghost" onClick={() => toast.info('안내', { message: '새로운 업데이트가 있습니다.' })}>Info Toast</SButton>
         </div>
       );
     }
@@ -476,25 +487,47 @@ export const Cards: Story = {
   name: 'Card — 전체',
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 16 }}>
-      <Card variant="raised" title="Raised Card" description="기본 그림자 카드입니다.">
-        <Typography variant="body2">카드 본문 내용이 여기에 들어갑니다.</Typography>
-      </Card>
-      <Card variant="flat" title="Flat Card" description="테두리만 있는 플랫 카드입니다.">
-        <Typography variant="body2">카드 본문 내용이 여기에 들어갑니다.</Typography>
-      </Card>
-      <Card
+      <SCard variant="raised" title="Raised Card" description="기본 그림자 카드입니다.">
+        <STypography variant="body2">카드 본문 내용이 여기에 들어갑니다.</STypography>
+      </SCard>
+      <SCard variant="flat" title="Flat Card" description="테두리만 있는 플랫 카드입니다.">
+        <STypography variant="body2">카드 본문 내용이 여기에 들어갑니다.</STypography>
+      </SCard>
+      <SCard
         variant="raised" title="With Footer" description="푸터가 있는 카드입니다."
         footer={
           <div style={{ display: 'flex', gap: 8 }}>
-            <Button size="sm" variant="outline">취소</Button>
-            <Button size="sm">확인</Button>
+            <SButton size="small" variant="outline">취소</SButton>
+            <SButton size="small">확인</SButton>
           </div>
         }
       >
-        <Typography variant="body2">카드 본문 내용이 여기에 들어갑니다.</Typography>
-      </Card>
+        <STypography variant="body2">카드 본문 내용이 여기에 들어갑니다.</STypography>
+      </SCard>
     </div>
   ),
+};
+
+export const Paginations: Story = {
+  name: 'Pagination — 전체',
+  render: () => {
+    function PaginationDemo() {
+      const [page, setPage] = useState(1);
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>100개 · 10개씩 (현재: {page}페이지)</STypography>
+            <SPagination itemCount={100} cntPerPage={10} currentPage={page} onChangedPage={(p) => setPage(p)} />
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>500개 · 10개씩</STypography>
+            <SPagination itemCount={500} cntPerPage={10} currentPage={1} />
+          </div>
+        </div>
+      );
+    }
+    return <PaginationDemo />;
+  },
 };
 
 export const Typographies: Story = {
@@ -502,17 +535,17 @@ export const Typographies: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const).map((v) => (
-        <Typography key={v} variant={v}>{v.toUpperCase()} — StarBanking 디자인 시스템</Typography>
+        <STypography key={v} variant={v}>{v.toUpperCase()} — StarBanking 디자인 시스템</STypography>
       ))}
       <div style={{ height: 8 }} />
-      <Typography variant="body1">Body1 — 본문 텍스트. StarBanking 디자인 시스템은 뱅킹 서비스에 최적화된 React 컴포넌트 라이브러리입니다.</Typography>
-      <Typography variant="body2">Body2 — 보조 본문 텍스트. 좀 더 작은 본문에 사용됩니다.</Typography>
-      <Typography variant="caption">Caption — 보조 설명 텍스트</Typography>
-      <Typography variant="overline">Overline — 섹션 레이블</Typography>
-      <Typography variant="label">Label — 폼 레이블</Typography>
+      <STypography variant="body1">Body1 — 본문 텍스트. StarBanking 디자인 시스템은 뱅킹 서비스에 최적화된 React 컴포넌트 라이브러리입니다.</STypography>
+      <STypography variant="body2">Body2 — 보조 본문 텍스트. 좀 더 작은 본문에 사용됩니다.</STypography>
+      <STypography variant="caption">Caption — 보조 설명 텍스트</STypography>
+      <STypography variant="overline">Overline — 섹션 레이블</STypography>
+      <STypography variant="label">Label — 폼 레이블</STypography>
       <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 4 }}>
         {(['primary', 'secondary', 'success', 'warning', 'error', 'muted'] as const).map((c) => (
-          <Typography key={c} variant="label" color={c}>{c}</Typography>
+          <STypography key={c} variant="label" color={c}>{c}</STypography>
         ))}
       </div>
     </div>
@@ -525,46 +558,50 @@ export const ColorTokens: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {[
         {
-          label: 'Brand / UI', colors: [
-            { name: 'Nav / Primary', value: '#253349' },
-            { name: 'Secondary (Button)', value: '#ffcc00' },
-            { name: 'Highlight', value: '#ffbc00' },
-            { name: 'Badge Yellow', value: '#fed700' },
+          label: 'KB Brand', colors: [
+            { name: 'Yellow Positive', value: '#FFBC00' },
+            { name: 'Yellow Negative', value: '#FFCC00' },
+            { name: 'Gray', value: '#60584C' },
+            { name: 'Dark Gray', value: '#545045' },
+            { name: 'Gold', value: '#C5A028' },
+            { name: 'Silver', value: '#A8AAAD' },
+          ],
+        },
+        {
+          label: 'Button / Surface', colors: [
+            { name: 'Primary (KB Yellow)', value: '#FFBC00' },
+            { name: 'Secondary (Navy)', value: '#253349' },
+            { name: 'Danger', value: '#ff3232' },
           ],
         },
         {
           label: 'Semantic', colors: [
-            { name: 'Point / Link', value: '#287eff' },
-            { name: 'Error / Danger', value: '#ff3232' },
-            { name: 'Hover bg', value: '#f2f2f2' },
-            { name: 'Base bg', value: '#f7f7f7' },
+            { name: 'Success', value: '#36b37e' },
+            { name: 'Warning', value: '#ff8b00' },
+            { name: 'Error', value: '#ff5630' },
+            { name: 'Info', value: '#2563eb' },
           ],
         },
         {
           label: 'Text', colors: [
-            { name: 'Strong text', value: '#222' },
-            { name: 'Base text', value: '#444' },
-            { name: 'Muted text', value: '#767676' },
-            { name: 'Placeholder', value: '#999' },
-            { name: 'Disabled text', value: '#ababab' },
+            { name: 'Strong', value: '#222222' },
+            { name: 'Base', value: '#444444' },
+            { name: 'Muted', value: '#767676' },
+            { name: 'Placeholder', value: '#999999' },
+            { name: 'Disabled', value: '#ababab' },
           ],
         },
         {
-          label: 'Border / Line', colors: [
-            { name: 'Base border', value: '#d2d2d2' },
-            { name: 'Light border', value: '#ebebeb' },
-          ],
-        },
-        {
-          label: 'Brand Brown', colors: [
-            { name: 'Brown Light', value: '#a8917b' },
-            { name: 'Brown Base', value: '#766554' },
-            { name: 'Brown Dark', value: '#4e4238' },
+          label: 'Border / Surface', colors: [
+            { name: 'Border', value: '#d2d2d2' },
+            { name: 'Border Light', value: '#ebebeb' },
+            { name: 'Surface Hover', value: '#f2f2f2' },
+            { name: 'Surface', value: '#ffffff' },
           ],
         },
       ].map(({ label, colors }) => (
         <div key={label}>
-          <Typography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>{label}</Typography>
+          <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>{label}</STypography>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             {colors.map(({ name, value }) => (
               <div key={name} style={{ minWidth: 100, flex: '0 0 auto' }}>

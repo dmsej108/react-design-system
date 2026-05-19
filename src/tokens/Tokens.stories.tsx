@@ -48,9 +48,22 @@ export const Colors: Story = {
     const shades = ['50','100','200','300','400','500','600','700','800','900'];
     return (
       <div style={{ padding: 32, fontFamily: 'var(--font-family-base)' }}>
-        <ColorRow label="Primary (Navy Blue)" prefix="primary" shades={shades} />
-        <ColorRow label="Secondary (Teal)" prefix="secondary" shades={shades} />
+        <ColorRow label="Primary / KB Yellow" prefix="primary" shades={shades} />
+        <ColorRow label="Secondary / KB Gray" prefix="secondary" shades={shades} />
         <ColorRow label="Neutral" prefix="neutral" shades={shades} />
+
+        <div style={{ marginBottom: 32 }}>
+          <p style={{ margin: '0 0 12px', fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-neutral-500)' }}>KB Brand</p>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <Swatch name="yellow-positive" cssVar="--color-brand-yellow-positive" />
+            <Swatch name="yellow-negative" cssVar="--color-brand-yellow-negative" />
+            <Swatch name="gray" cssVar="--color-brand-gray" />
+            <Swatch name="dark-gray" cssVar="--color-brand-dark-gray" />
+            <Swatch name="gold" cssVar="--color-brand-gold" />
+            <Swatch name="silver" cssVar="--color-brand-silver" />
+          </div>
+        </div>
+
         <div style={{ marginBottom: 32 }}>
           <p style={{ margin: '0 0 12px', fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-neutral-500)' }}>Semantic</p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>

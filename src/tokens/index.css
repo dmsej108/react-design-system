@@ -1,28 +1,28 @@
 :root {
   /* ── Colors ── */
-  /* Primary */
-  --color-primary-50:  #e6f0ff;
-  --color-primary-100: #b3ceff;
-  --color-primary-200: #80acff;
-  --color-primary-300: #4d8aff;
-  --color-primary-400: #1a68ff;
-  --color-primary-500: #0052cc;
-  --color-primary-600: #0041a3;
-  --color-primary-700: #00317a;
-  --color-primary-800: #002052;
-  --color-primary-900: #001029;
+  /* Primary / KB Yellow */
+  --color-primary-50:  #FFF9E6;
+  --color-primary-100: #FFEDB3;
+  --color-primary-200: #FFE080;
+  --color-primary-300: #FFD54D;
+  --color-primary-400: #FFCC00;  /* KB Yellow Negative */
+  --color-primary-500: #FFBC00;  /* KB Yellow Positive */
+  --color-primary-600: #CC9600;
+  --color-primary-700: #997000;
+  --color-primary-800: #664B00;
+  --color-primary-900: #332500;
 
-  /* Secondary / Teal */
-  --color-secondary-50:  #e0f7fa;
-  --color-secondary-100: #b2ebf2;
-  --color-secondary-200: #80deea;
-  --color-secondary-300: #4dd0e1;
-  --color-secondary-400: #26c6da;
-  --color-secondary-500: #00b8d9;
-  --color-secondary-600: #0097ae;
-  --color-secondary-700: #006978;
-  --color-secondary-800: #004d57;
-  --color-secondary-900: #002a30;
+  /* Secondary / KB Gray */
+  --color-secondary-50:  #F7F5F2;
+  --color-secondary-100: #EDEAE5;
+  --color-secondary-200: #D8D2CA;
+  --color-secondary-300: #BCB3A8;
+  --color-secondary-400: #9A9186;
+  --color-secondary-500: #7D7468;
+  --color-secondary-600: #60584C;  /* KB Gray */
+  --color-secondary-700: #545045;  /* KB Dark Gray */
+  --color-secondary-800: #3C3730;
+  --color-secondary-900: #261F19;
 
   /* Neutral */
   --color-neutral-0:   #ffffff;
@@ -108,10 +108,13 @@
   --transition-normal: 200ms ease;
   --transition-slow:   300ms ease;
 
-  /* ── Brand custom ── */
-  --color-brand-brown:       #766554;
-  --color-brand-brown-light: #a8917b;
-  --color-brand-brown-dark:  #4e4238;
+  /* ── KB Brand ── */
+  --color-brand-yellow-positive: #FFBC00;  /* KB Yellow Positive (Pantone 130 C) */
+  --color-brand-yellow-negative: #FFCC00;  /* KB Yellow Negative (Pantone 1235 C) */
+  --color-brand-gray:            #60584C;  /* KB Gray (Pantone 404 C) */
+  --color-brand-dark-gray:       #545045;  /* KB Dark Gray (Pantone 411C) */
+  --color-brand-gold:            #C5A028;  /* KB Gold (Pantone 872 C) */
+  --color-brand-silver:          #A8AAAD;  /* KB Silver (Pantone 877 C) */
 
   /* ── Legacy variable aliases (maps css/ folder variables to design tokens) ── */
   --base-txt-color:        var(--color-neutral-600);
@@ -131,6 +134,10 @@
   --ds-surface-disabled: #f2f2f2;
   --ds-surface-nav:      #253349;
   --ds-surface-nav-hover:#464646;
+  --ds-surface-primary:         var(--color-primary-500);  /* #FFBC00 KB Yellow Positive */
+  --ds-surface-primary-hover:   var(--color-primary-600);  /* #CC9600 */
+  --ds-surface-secondary:       var(--ds-surface-nav);      /* #253349 dark navy */
+  --ds-surface-secondary-hover: var(--ds-surface-nav-hover);/* #464646 */
 
   --ds-text:             #222222;
   --ds-text-2:           #444444;

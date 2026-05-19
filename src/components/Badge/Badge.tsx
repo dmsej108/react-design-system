@@ -35,10 +35,8 @@ export const Badge: React.FC<BadgeProps> = ({
 
   return (
     <span className={classes} {...rest} data-type={contorl}>
-      <div>
       {dot && <span className={styles.dot} aria-hidden="true" />}
       {children}
-     </div>
     </span>
   );
 };

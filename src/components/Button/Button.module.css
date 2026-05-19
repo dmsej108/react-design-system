@@ -56,16 +56,16 @@
 }
 
 /* ── Variants ── */
-/* primary → dark navy */
+/* primary → KB Yellow */
 .primary {
-  border-color: var(--ds-surface-nav);
-  background-color: var(--ds-surface-nav);
-  color: var(--ds-text-on-dark);
+  border-color: var(--ds-surface-primary);
+  background-color: var(--ds-surface-primary);
+  color: var(--ds-text);
 }
 .primary:hover:not(:disabled) {
-  background-color: var(--ds-surface-nav-hover);
-  border-color: var(--ds-surface-nav-hover);
-  color: var(--ds-text-on-dark);
+  background-color: var(--ds-surface-primary-hover);
+  border-color: var(--ds-surface-primary-hover);
+  color: var(--ds-text);
 }
 .primary:disabled {
   background-color: var(--ds-border-light);
@@ -73,16 +73,17 @@
   color: var(--ds-text-placeholder);
 }
 
-/* secondary → yellow */
+/* secondary → dark navy */
 .secondary {
-  border-color: #ffcc00;
-  background-color: #ffcc00;
-  color: #222;
+  border-color: var(--ds-surface-secondary);
+  background-color: var(--ds-surface-secondary);
+  color: var(--ds-text-on-dark);
   font-weight: bold;
 }
 .secondary:hover:not(:disabled) {
-  background-color: #ffed90;
-  border-color: #ffed90;
+  background-color: var(--ds-surface-secondary-hover);
+  border-color: var(--ds-surface-secondary-hover);
+  color: var(--ds-text-on-dark);
 }
 
 /* outline */

@@ -39,8 +39,5 @@ export type { DateRangePickerProps as SDateRangePickerProps } from './components
 export { Pagination as SPagination } from './components/Pagination';
 export type { PaginationProps as SPaginationProps } from './components/Pagination';
 
-export { SearchItem as SSearchItem } from './components/SearchItem';
-export type { SearchItemProps as SSearchItemProps } from './components/SearchItem';
-
 export { BaseButton as SBaseButton } from './components/BaseButton';
 export type { BaseButtonProps as SBaseButtonProps } from './components/BaseButton';
