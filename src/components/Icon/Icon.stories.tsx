@@ -6,6 +6,7 @@ import type { IconName, IconSize } from './Icon';
 const ALL_ICONS: IconName[] = [
   'arrowUp', 'arrowDown', 'arrowLeft', 'arrowRight',
   'chevronUp', 'chevronDown', 'chevronLeft', 'chevronRight',
+  'chevronLeftDouble', 'chevronRightDouble',
   'search', 'send', 'plus', 'minus', 'close', 'check',
   'download', 'upload', 'edit', 'trash', 'copy',
   'user', 'users', 'settings', 'home', 'menu',
@@ -18,7 +19,7 @@ const ALL_ICONS: IconName[] = [
 
 const GROUPS: { label: string; icons: IconName[] }[] = [
   { label: 'Arrow', icons: ['arrowUp', 'arrowDown', 'arrowLeft', 'arrowRight'] },
-  { label: 'Chevron', icons: ['chevronUp', 'chevronDown', 'chevronLeft', 'chevronRight'] },
+  { label: 'Chevron', icons: ['chevronUp', 'chevronDown', 'chevronLeft', 'chevronRight', 'chevronLeftDouble', 'chevronRightDouble'] },
   { label: 'Actions', icons: ['search', 'send', 'plus', 'minus', 'close', 'check', 'download', 'upload', 'edit', 'trash', 'copy'] },
   { label: 'People', icons: ['user', 'users'] },
   { label: 'System', icons: ['settings', 'home', 'menu', 'bell', 'eye', 'eyeOff', 'lock', 'unlock'] },

@@ -4,6 +4,7 @@ export type IconSize = 'xs' | 'small' | 'medium' | 'large' | 'xl';
 export type IconName =
   | 'arrowUp' | 'arrowDown' | 'arrowLeft' | 'arrowRight'
   | 'chevronUp' | 'chevronDown' | 'chevronLeft' | 'chevronRight'
+  | 'chevronLeftDouble' | 'chevronRightDouble'
   | 'search' | 'send' | 'plus' | 'minus' | 'close' | 'check'
   | 'download' | 'upload' | 'edit' | 'trash' | 'copy'
   | 'user' | 'users' | 'settings' | 'home' | 'menu'
@@ -41,8 +42,10 @@ const PATHS: Record<IconName, React.ReactNode> = {
   /* Chevron */
   chevronUp:    <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />,
   chevronDown:  <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />,
-  chevronLeft:  <path d="M10 4L6 8l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />,
-  chevronRight: <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />,
+  chevronLeft:        <path d="M10 4L6 8l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />,
+  chevronRight:       <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />,
+  chevronLeftDouble:  <><path d="M9 4L5 8l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M13 4L9 8l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></>,
+  chevronRightDouble: <><path d="M7 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M3 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></>,
   /* Actions */
   search:   <><circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.5" /><path d="M10.5 10.5L13 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></>,
   send:     <path d="M13.5 2.5L7 9M13.5 2.5L9 13.5L7 9M13.5 2.5L2.5 6.5L7 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />,

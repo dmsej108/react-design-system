@@ -46,7 +46,7 @@ export const Pagination = ({ itemCount = 0, cntPerPage = 0, currentPage = 0, onC
     <ul className={styles.pagination}>
       <li className={styles.pageItem}>
         <Button variant="ghost" size="small" aria-label="맨처음" onClick={() => handleChangedPage(1)}>
-          <Icon name="arrowLeft" size="small" />
+          <Icon name="chevronLeftDouble" size="small" />
         </Button>
       </li>
       <li className={styles.pageItem}>
@@ -74,7 +74,7 @@ export const Pagination = ({ itemCount = 0, cntPerPage = 0, currentPage = 0, onC
       </li>
       <li className={styles.pageItem}>
         <Button variant="ghost" size="small" aria-label="맨끝" onClick={() => handleChangedPage(pageCount)}>
-          <Icon name="arrowRight" size="small" />
+          <Icon name="chevronRightDouble" size="small" />
         </Button>
       </li>
     </ul>
