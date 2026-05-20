@@ -11,6 +11,10 @@ import { ToastProvider as SToastProvider, useToast } from './components/Toast/To
 import { Typography as STypography } from './components/Typography/Typography';
 import { Icon as SIcon } from './components/Icon/Icon';
 import { Pagination as SPagination } from './components/Pagination/Pagination';
+import { Radio as SRadio, RadioGroup as SRadioGroup } from './components/Radio/Radio';
+import { Checkbox as SCheckbox, CheckboxGroup as SCheckboxGroup } from './components/Checkbox/Checkbox';
+import { Chip as SChip } from './components/Chip/Chip';
+import type { ChipVariant } from './components/Chip/Chip';
 
 /* ── Shared section wrapper ── */
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
@@ -53,6 +57,10 @@ function ShowcaseAll() {
   const [modalSize, setModalSize] = useState<'small' | 'medium' | 'large'>('medium');
   const [fileList, setFileList] = useState<File[]>([]);
   const [page, setPage] = useState(1);
+  const [radioVal, setRadioVal] = useState('card');
+  const [checkboxVal, setCheckboxVal] = useState<string[]>(['sms']);
+  const [chips, setChips] = useState(['서울', '부산', '대구', '인천']);
+  const [activeFilter, setActiveFilter] = useState('전체');
   const toast = useToast();
 
   return (
@@ -93,6 +101,18 @@ function ShowcaseAll() {
               <SButton variant="secondary" leftIcon={<SIcon name="plus" size="small" />}>추가</SButton>
             </div>
           </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Icon Only</STypography>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+              <SButton variant="ghost"   iconOnly size="small" ><SIcon name="search"   size="small"  /></SButton>
+              <SButton variant="ghost"   iconOnly size="medium"><SIcon name="search"   size="medium" /></SButton>
+              <SButton variant="ghost"   iconOnly size="large" ><SIcon name="search"   size="large"  /></SButton>
+              <SButton variant="outline" iconOnly size="small" ><SIcon name="edit"     size="small"  /></SButton>
+              <SButton variant="outline" iconOnly size="medium"><SIcon name="edit"     size="medium" /></SButton>
+              <SButton variant="danger"  iconOnly size="medium"><SIcon name="trash"    size="medium" /></SButton>
+              <SButton variant="ghost"   iconOnly disabled     ><SIcon name="settings" size="medium" /></SButton>
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -108,6 +128,96 @@ function ShowcaseAll() {
           <SBadge variant="neutral">중립</SBadge>
           <SBadge variant="success" size="large">Large</SBadge>
           <SBadge variant="neutral" size="small">Small</SBadge>
+        </div>
+      </Section>
+
+      {/* Chip */}
+      <Section title="Chip">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>필터 선택 (클릭)</STypography>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {['전체', '입출금', '이체', '카드', '대출'].map((f) => (
+                <SChip key={f} label={f} variant={activeFilter === f ? 'primary' : 'neutral'} onClick={() => setActiveFilter(f)} />
+              ))}
+            </div>
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>태그 (닫기)</STypography>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {chips.map((c) => (
+                <SChip key={c} label={c} variant="primary" onClose={() => setChips((prev) => prev.filter((x) => x !== c))} />
+              ))}
+              {chips.length === 0 && <STypography variant="caption" color="muted">모두 삭제됐습니다.</STypography>}
+            </div>
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Variants</STypography>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {(['primary', 'secondary', 'success', 'warning', 'error', 'info', 'neutral'] as ChipVariant[]).map((v) => (
+                <SChip key={v} label={v} variant={v} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Radio */}
+      <Section title="Radio">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>결제 수단</STypography>
+            <SRadioGroup
+              name="payment"
+              value={radioVal}
+              onChange={setRadioVal}
+              options={[
+                { value: 'card',     label: '카드' },
+                { value: 'transfer', label: '계좌이체' },
+                { value: 'mobile',   label: '간편결제' },
+              ]}
+            />
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>비활성</STypography>
+            <SRadioGroup
+              name="payment-disabled"
+              value="card"
+              disabled
+              options={[
+                { value: 'card',     label: '카드' },
+                { value: 'transfer', label: '계좌이체' },
+              ]}
+            />
+          </div>
+        </div>
+      </Section>
+
+      {/* Checkbox */}
+      <Section title="Checkbox">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>알림 수단</STypography>
+            <SCheckboxGroup
+              options={[
+                { value: 'sms',   label: 'SMS' },
+                { value: 'email', label: '이메일' },
+                { value: 'push',  label: '앱 푸시' },
+                { value: 'kakao', label: '카카오톡', disabled: true },
+              ]}
+              value={checkboxVal}
+              onChange={setCheckboxVal}
+            />
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>상태</STypography>
+            <div style={{ display: 'flex', gap: 16 }}>
+              <SCheckbox label="미선택" checked={false} onChange={() => {}} />
+              <SCheckbox label="선택됨" checked={true} onChange={() => {}} />
+              <SCheckbox label="부분선택" checked={false} indeterminate onChange={() => {}} />
+              <SCheckbox label="비활성" disabled checked={false} onChange={() => {}} />
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -342,6 +452,18 @@ export const Buttons: Story = {
           <SButton variant="secondary" leftIcon={<SIcon name="plus" size="small" />}>추가</SButton>
         </div>
       </div>
+      <div>
+        <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Icon Only</STypography>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <SButton variant="ghost"   iconOnly size="small" ><SIcon name="search" size="small"  /></SButton>
+          <SButton variant="ghost"   iconOnly size="medium"><SIcon name="search" size="medium" /></SButton>
+          <SButton variant="ghost"   iconOnly size="large" ><SIcon name="search" size="large"  /></SButton>
+          <SButton variant="outline" iconOnly size="small" ><SIcon name="edit"   size="small"  /></SButton>
+          <SButton variant="outline" iconOnly size="medium"><SIcon name="edit"   size="medium" /></SButton>
+          <SButton variant="danger"  iconOnly size="medium"><SIcon name="trash"  size="medium" /></SButton>
+          <SButton variant="ghost"   iconOnly disabled     ><SIcon name="settings" size="medium" /></SButton>
+        </div>
+      </div>
     </div>
   ),
 };
@@ -361,6 +483,149 @@ export const Badges: Story = {
       <SBadge variant="neutral" size="small">Small</SBadge>
     </div>
   ),
+};
+
+export const Chips: Story = {
+  name: 'Chip — 전체',
+  render: () => {
+    function ChipDemo() {
+      const [active, setActive] = useState('전체');
+      const [tags, setTags] = useState(['React', 'TypeScript', 'Vite', 'Storybook']);
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>Variants</STypography>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {(['primary', 'secondary', 'success', 'warning', 'error', 'info', 'neutral'] as ChipVariant[]).map((v) => (
+                <SChip key={v} label={v} variant={v} />
+              ))}
+            </div>
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>클릭 (필터)</STypography>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {['전체', '입출금', '이체', '카드', '대출'].map((f) => (
+                <SChip key={f} label={f} variant={active === f ? 'primary' : 'neutral'} onClick={() => setActive(f)} />
+              ))}
+            </div>
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>닫기</STypography>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {tags.map((t) => (
+                <SChip key={t} label={t} variant="info" onClose={() => setTags((p) => p.filter((x) => x !== t))} />
+              ))}
+            </div>
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>비활성</STypography>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <SChip label="비활성" variant="neutral" disabled />
+              <SChip label="비활성 + 닫기" variant="primary" disabled onClose={() => {}} />
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return <ChipDemo />;
+  },
+};
+
+export const Radios: Story = {
+  name: 'Radio — 전체',
+  render: () => {
+    function RadioDemo() {
+      const [val, setVal] = useState('card');
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>가로 (기본)</STypography>
+            <SRadioGroup
+              name="r1"
+              value={val}
+              onChange={setVal}
+              options={[{ value: 'card', label: '카드' }, { value: 'transfer', label: '계좌이체' }, { value: 'mobile', label: '간편결제' }]}
+            />
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>세로</STypography>
+            <SRadioGroup
+              name="r2"
+              direction="vertical"
+              value={val}
+              onChange={setVal}
+              options={[{ value: 'card', label: '카드' }, { value: 'transfer', label: '계좌이체' }, { value: 'mobile', label: '간편결제' }]}
+            />
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>크기</STypography>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {(['small', 'medium', 'large'] as const).map((size) => (
+                <SRadioGroup key={size} name={`r-${size}`} value="a" size={size}
+                  options={[{ value: 'a', label: `${size} A` }, { value: 'b', label: `${size} B` }]}
+                />
+              ))}
+            </div>
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>비활성</STypography>
+            <SRadioGroup name="r3" value="card" disabled
+              options={[{ value: 'card', label: '카드' }, { value: 'transfer', label: '계좌이체' }]}
+            />
+          </div>
+        </div>
+      );
+    }
+    return <RadioDemo />;
+  },
+};
+
+export const Checkboxes: Story = {
+  name: 'Checkbox — 전체',
+  render: () => {
+    function CheckboxDemo() {
+      const [groupVal, setGroupVal] = useState<string[]>(['sms']);
+      const items = ['입출금 내역', '이체 내역', '카드 결제', '자동이체'];
+      const [selected, setSelected] = useState<string[]>([]);
+      const allChecked = selected.length === items.length;
+      const indeterminate = selected.length > 0 && !allChecked;
+      const toggle = (item: string, checked: boolean) =>
+        setSelected((p) => checked ? [...p, item] : p.filter((v) => v !== item));
+
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>상태</STypography>
+            <div style={{ display: 'flex', gap: 16 }}>
+              <SCheckbox label="미선택" checked={false} onChange={() => {}} />
+              <SCheckbox label="선택됨" checked={true} onChange={() => {}} />
+              <SCheckbox label="부분선택" checked={false} indeterminate onChange={() => {}} />
+              <SCheckbox label="비활성" disabled checked={false} onChange={() => {}} />
+            </div>
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>전체선택 패턴</STypography>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <SCheckbox label={<strong>전체 선택</strong>} checked={allChecked} indeterminate={indeterminate} onChange={(c) => setSelected(c ? [...items] : [])} />
+              <div style={{ width: '100%', height: 1, background: 'var(--ds-border-light)' }} />
+              {items.map((item) => (
+                <SCheckbox key={item} label={item} checked={selected.includes(item)} onChange={(c) => toggle(item, c)} />
+              ))}
+            </div>
+          </div>
+          <div>
+            <STypography variant="caption" color="muted" as="div" style={{ marginBottom: 8 }}>그룹</STypography>
+            <SCheckboxGroup
+              options={[{ value: 'sms', label: 'SMS' }, { value: 'email', label: '이메일' }, { value: 'push', label: '앱 푸시' }, { value: 'kakao', label: '카카오톡', disabled: true }]}
+              value={groupVal}
+              onChange={setGroupVal}
+            />
+          </div>
+        </div>
+      );
+    }
+    return <CheckboxDemo />;
+  },
 };
 
 export const Inputs: Story = {

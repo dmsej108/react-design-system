@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button as SButton } from './Button';
+import { Icon as SIcon } from '../Icon/Icon';
 
 const SendIcon = () => (
   <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -98,6 +99,30 @@ export const States: Story = {
 export const FullWidth: Story = {
   args: { fullWidth: true, children: '전체 너비 버튼' },
   decorators: [(Story) => <div style={{ width: 320 }}><Story /></div>],
+};
+
+/* ── Icon Only ── */
+export const IconOnly: Story = {
+  name: 'Icon Only',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <SButton variant="ghost"   iconOnly size="small" ><SIcon name="search"   size="small"  /></SButton>
+        <SButton variant="ghost"   iconOnly size="medium"><SIcon name="search"   size="medium" /></SButton>
+        <SButton variant="ghost"   iconOnly size="large" ><SIcon name="search"   size="large"  /></SButton>
+      </div>
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <SButton variant="outline" iconOnly size="small" ><SIcon name="edit"     size="small"  /></SButton>
+        <SButton variant="outline" iconOnly size="medium"><SIcon name="edit"     size="medium" /></SButton>
+        <SButton variant="outline" iconOnly size="large" ><SIcon name="edit"     size="large"  /></SButton>
+      </div>
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <SButton variant="danger"  iconOnly size="small" ><SIcon name="trash"    size="small"  /></SButton>
+        <SButton variant="primary" iconOnly size="small" ><SIcon name="plus"     size="small"  /></SButton>
+        <SButton variant="ghost"   iconOnly disabled     ><SIcon name="settings" size="medium" /></SButton>
+      </div>
+    </div>
+  ),
 };
 
 /* ── Individual variants as stories ── */

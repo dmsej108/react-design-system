@@ -124,6 +124,16 @@
   width: 100%;
 }
 
+/* ── Icon only ── */
+.iconOnly {
+  padding: 0;
+  min-width: unset;
+}
+
+.iconOnly.small  { width: 28px; }
+.iconOnly.medium { width: 36px; }
+.iconOnly.large  { width: 44px; }
+
 /* ── Loading spinner ── */
 .spinner {
   width: 1em;

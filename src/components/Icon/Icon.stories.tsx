@@ -15,6 +15,10 @@ const ALL_ICONS: IconName[] = [
   'calendar', 'clock', 'filter', 'sort', 'refresh',
   'externalLink', 'link', 'attach', 'image',
   'creditCard', 'transfer', 'wallet',
+  'monitor', 'laptop', 'server', 'database', 'cpu',
+  'cloud', 'cloudUpload', 'cloudDownload', 'wifi', 'globe',
+  'terminal', 'code', 'gitBranch', 'layers', 'package', 'bug', 'activity',
+  'shield', 'shieldCheck', 'rocket',
 ];
 
 const GROUPS: { label: string; icons: IconName[] }[] = [
@@ -25,7 +29,12 @@ const GROUPS: { label: string; icons: IconName[] }[] = [
   { label: 'System', icons: ['settings', 'home', 'menu', 'bell', 'eye', 'eyeOff', 'lock', 'unlock'] },
   { label: 'Status', icons: ['info', 'warning', 'error', 'success'] },
   { label: 'Utility', icons: ['calendar', 'clock', 'filter', 'sort', 'refresh', 'externalLink', 'link', 'attach', 'image'] },
-  { label: 'Banking', icons: ['creditCard', 'transfer', 'wallet'] },
+  { label: 'Banking',      icons: ['creditCard', 'transfer', 'wallet'] },
+  { label: 'Tech',         icons: ['monitor', 'laptop', 'server', 'database', 'cpu'] },
+  { label: 'Cloud',        icons: ['cloud', 'cloudUpload', 'cloudDownload', 'wifi', 'globe'] },
+  { label: 'Dev Tools',    icons: ['terminal', 'code', 'gitBranch', 'layers', 'package', 'bug', 'activity'] },
+  { label: 'Security',     icons: ['shield', 'shieldCheck'] },
+  { label: 'Deploy',       icons: ['rocket'] },
 ];
 
 const meta: Meta<typeof SIcon> = {

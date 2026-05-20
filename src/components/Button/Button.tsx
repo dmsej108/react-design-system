@@ -9,6 +9,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?: ButtonSize;
   loading?: boolean;
   fullWidth?: boolean;
+  iconOnly?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
 }
@@ -20,6 +21,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size = 'medium',
       loading = false,
       fullWidth = false,
+      iconOnly = false,
       leftIcon,
       rightIcon,
       disabled,
@@ -34,6 +36,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       styles[variant],
       styles[size],
       fullWidth ? styles.fullWidth : '',
+      iconOnly ? styles.iconOnly : '',
       className,
     ]
       .filter(Boolean)

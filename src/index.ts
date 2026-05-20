@@ -44,3 +44,9 @@ export type { BaseButtonProps as SBaseButtonProps } from './components/BaseButto
 
 export { Radio as SRadio, RadioGroup as SRadioGroup } from './components/Radio';
 export type { RadioProps as SRadioProps, RadioGroupProps as SRadioGroupProps, RadioOption as SRadioOption, RadioSize as SRadioSize } from './components/Radio';
+
+export { Checkbox as SCheckbox, CheckboxGroup as SCheckboxGroup } from './components/Checkbox';
+export type { CheckboxProps as SCheckboxProps, CheckboxGroupProps as SCheckboxGroupProps, CheckboxOption as SCheckboxOption, CheckboxSize as SCheckboxSize } from './components/Checkbox';
+
+export { Chip as SChip } from './components/Chip';
+export type { ChipProps as SChipProps, ChipVariant as SChipVariant, ChipSize as SChipSize } from './components/Chip';

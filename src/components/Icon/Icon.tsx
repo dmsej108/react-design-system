@@ -12,7 +12,17 @@ export type IconName =
   | 'info' | 'warning' | 'error' | 'success'
   | 'calendar' | 'clock' | 'filter' | 'sort' | 'refresh'
   | 'externalLink' | 'link' | 'attach' | 'image'
-  | 'creditCard' | 'transfer' | 'wallet';
+  | 'creditCard' | 'transfer' | 'wallet'
+  /* Tech */
+  | 'monitor' | 'laptop' | 'server' | 'database' | 'cpu'
+  /* Cloud / Network */
+  | 'cloud' | 'cloudUpload' | 'cloudDownload' | 'wifi' | 'globe'
+  /* Dev Tools */
+  | 'terminal' | 'code' | 'gitBranch' | 'layers' | 'package' | 'bug' | 'activity'
+  /* Security */
+  | 'shield' | 'shieldCheck'
+  /* Deploy */
+  | 'rocket';
 
 export interface IconProps {
   name: IconName;
@@ -89,6 +99,31 @@ const PATHS: Record<IconName, React.ReactNode> = {
   creditCard: <><rect x="1.5" y="4" width="13" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.5" /><path d="M1.5 7h13" stroke="currentColor" strokeWidth="1.5" /><path d="M4 10h2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></>,
   transfer:   <><path d="M3 5h10M10 2l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M13 11H3M6 8l-3 3 3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></>,
   wallet:     <><rect x="1.5" y="4" width="13" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.5" /><path d="M1.5 7.5h13" stroke="currentColor" strokeWidth="1.5" /><circle cx="11.5" cy="10" r="1" fill="currentColor" /></>,
+  /* Tech */
+  monitor:    <><rect x="1" y="2" width="14" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.5" /><path d="M5.5 15h5M8 12v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></>,
+  laptop:     <><rect x="2" y="3" width="12" height="8" rx="1" stroke="currentColor" strokeWidth="1.5" /><path d="M0 13h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></>,
+  server:     <><rect x="2" y="2" width="12" height="5" rx="1" stroke="currentColor" strokeWidth="1.5" /><rect x="2" y="9" width="12" height="5" rx="1" stroke="currentColor" strokeWidth="1.5" /><circle cx="12" cy="4.5" r="1" fill="currentColor" /><circle cx="12" cy="11.5" r="1" fill="currentColor" /></>,
+  database:   <><ellipse cx="8" cy="4.5" rx="5" ry="1.5" stroke="currentColor" strokeWidth="1.5" /><path d="M3 4.5v7c0 .83 2.24 1.5 5 1.5s5-.67 5-1.5v-7M3 8c0 .83 2.24 1.5 5 1.5S13 8.83 13 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></>,
+  cpu:        <><rect x="4" y="4" width="8" height="8" rx="1" stroke="currentColor" strokeWidth="1.5" /><path d="M6 7h4M6 9h4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /><path d="M1 6h3M1 10h3M12 6h3M12 10h3M6 1v3M10 1v3M6 12v3M10 12v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></>,
+  /* Cloud / Network */
+  cloud:         <path d="M3 12A2.5 2.5 0 0 0 3 7h.5Q4 4 8 4Q12 4 12.5 7A2.5 2.5 0 0 0 12.5 12H3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />,
+  cloudUpload:   <><path d="M3 10A2.5 2.5 0 0 0 3 5h.5Q4 2 8 2Q12 2 12.5 5A2.5 2.5 0 0 0 12.5 10H3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="M8 15v-4M6 13l2-2 2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></>,
+  cloudDownload: <><path d="M3 10A2.5 2.5 0 0 0 3 5h.5Q4 2 8 2Q12 2 12.5 5A2.5 2.5 0 0 0 12.5 10H3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="M8 11v4M6 13l2 2 2-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></>,
+  wifi:          <><path d="M1 6a10 10 0 0 1 14 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><path d="M3.5 9a6 6 0 0 1 9 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><path d="M6 12a3 3 0 0 1 4 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><circle cx="8" cy="14" r="1" fill="currentColor" /></>,
+  globe:         <><circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" /><path d="M8 2c-2 2-3 4-3 6s1 4 3 6M8 2c2 2 3 4 3 6s-1 4-3 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><path d="M2 8h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></>,
+  /* Dev Tools */
+  terminal:    <><rect x="1" y="2" width="14" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.5" /><path d="M4 6l3 3-3 3M9 12h3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></>,
+  code:        <path d="M5 4L1 8l4 4M11 4l4 4-4 4M9.5 2l-3 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />,
+  gitBranch:   <><circle cx="5" cy="4" r="1.5" stroke="currentColor" strokeWidth="1.5" /><circle cx="5" cy="12" r="1.5" stroke="currentColor" strokeWidth="1.5" /><circle cx="11" cy="6" r="1.5" stroke="currentColor" strokeWidth="1.5" /><path d="M5 5.5v5M5 5.5C5 8 11 8 11 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></>,
+  layers:      <><path d="M8 1L1 5l7 3 7-3-7-4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="M1 8l7 3 7-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M1 11l7 3 7-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></>,
+  package:     <><path d="M2 5.5l6-3 6 3v7l-6 3-6-3v-7z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="M8 2.5v13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><path d="M2 5.5l6 3 6-3M5.5 4L11 6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></>,
+  bug:         <><path d="M6 13a2 2 0 1 0 4 0V9a2 2 0 1 0-4 0v4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="M5.5 5.5A2.5 2.5 0 0 1 8 4a2.5 2.5 0 0 1 2.5 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><path d="M4 9H1M15 9h-3M4 11l-2 2M12 11l2 2M4 7l-2-2M12 7l2-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></>,
+  activity:    <path d="M1 8h3l2-4.5L8 12l2-4.5 1.5 3H15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />,
+  /* Security */
+  shield:      <path d="M8 2L3 4.5v4c0 3 2 4.5 5 5.5 3-1 5-2.5 5-5.5v-4L8 2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />,
+  shieldCheck: <><path d="M8 2L3 4.5v4c0 3 2 4.5 5 5.5 3-1 5-2.5 5-5.5v-4L8 2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="M5.5 8l2 2 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></>,
+  /* Deploy */
+  rocket: <><path d="M8 1.5c-3 2-4.5 5-4.5 7 0 1.5.5 2.5 4.5 4.5 4-2 4.5-3 4.5-4.5 0-2-1.5-5-4.5-7z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /><path d="M4.5 14l-2 1.5M11.5 14l2 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><circle cx="8" cy="8" r="1.5" fill="currentColor" /></>,
 };
 
 /* ── Generic Icon component ── */
