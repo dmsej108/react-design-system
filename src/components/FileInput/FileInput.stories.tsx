@@ -6,7 +6,10 @@ const meta: Meta<typeof SFileInput> = {
   component: SFileInput,
   tags: ['autodocs'],
   argTypes: {
+    variant: { control: 'radio', options: ['dropzone', 'inline'] },
+    size: { control: 'radio', options: ['small', 'medium', 'large'] },
     label: { control: 'text' },
+    placeholder: { control: 'text' },
     accept: { control: 'text', description: 'MIME 타입 또는 확장자 (예: image/*, .pdf)' },
     multiple: { control: 'boolean' },
     maxSize: { control: 'number', description: '최대 파일 크기 (bytes)' },
@@ -17,6 +20,7 @@ const meta: Meta<typeof SFileInput> = {
     helperText: { control: 'text' },
   },
   args: {
+    variant: 'dropzone',
     label: '파일 업로드',
     multiple: false,
     disabled: false,
@@ -83,5 +87,48 @@ export const BankingExample: Story = {
     maxSize: 10 * 1024 * 1024,
     required: true,
     helperText: '신분증, 재직증명서 등 · PDF 또는 이미지 · 파일당 최대 10MB',
+  },
+};
+
+/* ── Inline Variant ── */
+export const Inline: Story = {
+  name: '인라인 (텍스트 입력형)',
+  args: {
+    variant: 'inline',
+    label: '첨부파일',
+    placeholder: '파일을 선택하세요',
+    helperText: '파일을 선택하거나 찾아보기를 클릭하세요.',
+  },
+};
+
+export const InlineMultiple: Story = {
+  name: '인라인 · 다중 선택',
+  args: {
+    variant: 'inline',
+    label: '첨부파일',
+    multiple: true,
+    accept: '.pdf,.doc,.docx',
+    helperText: 'PDF, DOC 형식',
+  },
+};
+
+export const InlineWithError: Story = {
+  name: '인라인 · 오류 상태',
+  args: {
+    variant: 'inline',
+    label: '신분증 업로드',
+    required: true,
+    error: true,
+    errorText: '파일을 업로드해주세요.',
+  },
+};
+
+export const InlineDisabled: Story = {
+  name: '인라인 · 비활성화',
+  args: {
+    variant: 'inline',
+    label: '첨부파일',
+    disabled: true,
+    helperText: '현재 파일 업로드가 불가합니다.',
   },
 };

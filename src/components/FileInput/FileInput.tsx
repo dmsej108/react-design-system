@@ -27,8 +27,13 @@ const CloseIcon = () => (
   </svg>
 );
 
+export type FileInputSize = 'small' | 'medium' | 'large';
+
 export interface FileInputProps {
   label?: string;
+  placeholder?: string;
+  variant?: 'dropzone' | 'inline';
+  size?: FileInputSize;
   accept?: string;
   multiple?: boolean;
   maxSize?: number; // bytes
@@ -42,6 +47,9 @@ export interface FileInputProps {
 
 export const FileInput: React.FC<FileInputProps> = ({
   label,
+  placeholder = '파일을 선택하세요',
+  variant = 'dropzone',
+  size = 'medium',
   accept,
   multiple = false,
   maxSize,
@@ -82,7 +90,6 @@ export const FileInput: React.FC<FileInputProps> = ({
     const next = files.filter((_, i) => i !== index);
     setFiles(next);
     onChange?.(next);
-    // reset native input so same file can be re-selected
     if (inputRef.current) inputRef.current.value = '';
   };
 
@@ -97,16 +104,111 @@ export const FileInput: React.FC<FileInputProps> = ({
     if (!disabled) addFiles(e.dataTransfer.files);
   };
 
+  const displayError = sizeError || (error ? errorText : '');
+
+  const hiddenInput = (
+    <input
+      ref={inputRef}
+      type="file"
+      className={styles.hiddenInput}
+      accept={accept}
+      multiple={multiple}
+      disabled={disabled}
+      onChange={(e) => addFiles(e.target.files)}
+      aria-hidden="true"
+      tabIndex={-1}
+    />
+  );
+
+  const fileList = files.length > 0 && (
+    <ul className={styles.fileList} role="list">
+      {files.map((file, i) => (
+        <li key={`${file.name}-${i}`} className={styles.fileItem}>
+          <div className={styles.fileIcon}>
+            <FileIcon />
+          </div>
+          <div className={styles.fileInfo}>
+            <div className={styles.fileName}>{file.name}</div>
+            <div className={styles.fileSize}>{formatBytes(file.size)}</div>
+          </div>
+          <button
+            type="button"
+            className={styles.removeBtn}
+            onClick={() => removeFile(i)}
+            aria-label={`${file.name} 삭제`}
+          >
+            <CloseIcon />
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+
+  const footer = (
+    <>
+      {displayError && <p className={styles.errorText}>{displayError}</p>}
+      {!displayError && helperText && <p className={styles.helperText}>{helperText}</p>}
+    </>
+  );
+
+  if (variant === 'inline') {
+    const hasFile = files.length > 0;
+    const displayName = hasFile
+      ? multiple && files.length > 1
+        ? `${files[0].name} 외 ${files.length - 1}개`
+        : files[0].name
+      : '';
+
+    const inlineFieldClass = [
+      styles.inlineField,
+      styles[`inlineField_${size}`],
+      error || sizeError ? styles.inlineError : '',
+      disabled ? styles.inlineDisabled : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
+
+    return (
+      <div className={styles.wrapper}>
+        {label && (
+          <span className={styles.label}>
+            {label}
+            {required && <span className={styles.required}>*</span>}
+          </span>
+        )}
+
+        <div className={styles.inlineRow}>
+          <div className={inlineFieldClass}>
+            {hiddenInput}
+            <span className={hasFile ? styles.inlineFilename : styles.inlinePlaceholder}>
+              {hasFile ? displayName : placeholder}
+            </span>
+          </div>
+          <button
+            type="button"
+            className={[styles.browseBtn, styles[`browseBtn_${size}`]].join(' ')}
+            disabled={disabled}
+            onClick={() => inputRef.current?.click()}
+          >
+            찾아보기
+          </button>
+        </div>
+
+        {fileList}
+        {footer}
+      </div>
+    );
+  }
+
   const zoneClass = [
     styles.dropzone,
+    styles[`dropzone_${size}`],
     dragging ? styles.dragging : '',
     error || sizeError ? styles.error : '',
     disabled ? styles.disabled : '',
   ]
     .filter(Boolean)
     .join(' ');
-
-  const displayError = sizeError || (error ? errorText : '');
 
   return (
     <div className={styles.wrapper}>
@@ -129,17 +231,7 @@ export const FileInput: React.FC<FileInputProps> = ({
           if ((e.key === 'Enter' || e.key === ' ') && !disabled) inputRef.current?.click();
         }}
       >
-        <input
-          ref={inputRef}
-          type="file"
-          className={styles.hiddenInput}
-          accept={accept}
-          multiple={multiple}
-          disabled={disabled}
-          onChange={(e) => addFiles(e.target.files)}
-          aria-hidden="true"
-          tabIndex={-1}
-        />
+        {hiddenInput}
         <div className={styles.icon}>
           <UploadIcon />
         </div>
@@ -153,32 +245,8 @@ export const FileInput: React.FC<FileInputProps> = ({
         </p>
       </div>
 
-      {files.length > 0 && (
-        <ul className={styles.fileList} role="list">
-          {files.map((file, i) => (
-            <li key={`${file.name}-${i}`} className={styles.fileItem}>
-              <div className={styles.fileIcon}>
-                <FileIcon />
-              </div>
-              <div className={styles.fileInfo}>
-                <div className={styles.fileName}>{file.name}</div>
-                <div className={styles.fileSize}>{formatBytes(file.size)}</div>
-              </div>
-              <button
-                type="button"
-                className={styles.removeBtn}
-                onClick={() => removeFile(i)}
-                aria-label={`${file.name} 삭제`}
-              >
-                <CloseIcon />
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {displayError && <p className={styles.errorText}>{displayError}</p>}
-      {!displayError && helperText && <p className={styles.helperText}>{helperText}</p>}
+      {fileList}
+      {footer}
     </div>
   );
 };

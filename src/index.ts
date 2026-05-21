@@ -16,7 +16,7 @@ export { Typography as STypography } from './components/Typography';
 export type { TypographyProps as STypographyProps, TypographyVariant as STypographyVariant, TypographyColor as STypographyColor } from './components/Typography';
 
 export { FileInput as SFileInput } from './components/FileInput';
-export type { FileInputProps as SFileInputProps } from './components/FileInput';
+export type { FileInputProps as SFileInputProps, FileInputSize as SFileInputSize } from './components/FileInput';
 
 export { Modal as SModal } from './components/Modal';
 export type { ModalProps as SModalProps, ModalSize as SModalSize, ModalFooterAlign as SModalFooterAlign } from './components/Modal';
