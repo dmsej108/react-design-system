@@ -50,3 +50,6 @@ export type { CheckboxProps as SCheckboxProps, CheckboxGroupProps as SCheckboxGr
 
 export { Chip as SChip } from './components/Chip';
 export type { ChipProps as SChipProps, ChipVariant as SChipVariant, ChipSize as SChipSize } from './components/Chip';
+
+export { Textarea as STextarea } from './components/Textarea';
+export type { TextareaProps as STextareaProps, TextareaSize as STextareaSize, TextareaResize as STextareaResize } from './components/Textarea';
