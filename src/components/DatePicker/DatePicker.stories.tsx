@@ -10,12 +10,14 @@ const meta: Meta<typeof SDatePicker> = {
     label:       { control: 'text' },
     placeholder: { control: 'text' },
     size:        { control: 'radio', options: ['small', 'medium', 'large'] },
+    dateFormat:  { control: 'text' },
     disabled:    { control: 'boolean' },
   },
   args: {
     label:       '날짜',
     placeholder: '날짜 선택',
     size:        'medium',
+    dateFormat:  'yyyy.MM.dd',
     disabled:    false,
   },
 };

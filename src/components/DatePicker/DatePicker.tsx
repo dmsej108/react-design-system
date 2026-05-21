@@ -9,6 +9,7 @@ export interface DatePickerProps {
   label?: string;
   placeholder?: string;
   size?: InputSize;
+  dateFormat?: string;
   disabled?: boolean;
   minDate?: Date;
   maxDate?: Date;
@@ -28,7 +29,7 @@ const DateInput = React.forwardRef<HTMLInputElement, InputProps>(
 );
 DateInput.displayName = 'DateInput';
 
-export const DatePicker = ({ label, placeholder = '날짜 선택', size = 'medium', disabled = false, minDate, maxDate, excludeDates, filterDate, onDateChange }: DatePickerProps) => {
+export const DatePicker = ({ label, placeholder = '날짜 선택', size = 'medium', dateFormat = 'yyyy.MM.dd', disabled = false, minDate, maxDate, excludeDates, filterDate, onDateChange }: DatePickerProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
 
   const handleChange = (date: Date | null) => {
@@ -41,7 +42,7 @@ export const DatePicker = ({ label, placeholder = '날짜 선택', size = 'mediu
       <ReactDatePicker
         selected={selectedDate}
         onChange={handleChange}
-        dateFormat="yyyy.MM.dd"
+        dateFormat={dateFormat}
         disabled={disabled}
         minDate={minDate}
         maxDate={maxDate}

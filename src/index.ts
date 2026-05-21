@@ -33,8 +33,6 @@ export type { IconProps as SIconProps, IconName, IconSize } from './components/I
 export { DatePicker as SDatePicker } from './components/DatePicker';
 export type { DatePickerProps as SDatePickerProps } from './components/DatePicker';
 
-export { DateRangePicker as SDateRangePicker } from './components/DateRangePicker';
-export type { DateRangePickerProps as SDateRangePickerProps } from './components/DateRangePicker';
 
 export { Pagination as SPagination } from './components/Pagination';
 export type { PaginationProps as SPaginationProps } from './components/Pagination';
