@@ -9,11 +9,13 @@ const meta: Meta<typeof SDatePicker> = {
   argTypes: {
     label:       { control: 'text' },
     placeholder: { control: 'text' },
+    size:        { control: 'radio', options: ['small', 'medium', 'large'] },
     disabled:    { control: 'boolean' },
   },
   args: {
     label:       '날짜',
     placeholder: '날짜 선택',
+    size:        'medium',
     disabled:    false,
   },
 };
