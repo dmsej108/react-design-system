@@ -1,6 +1,6 @@
 # Dependencies
 
-`@zzou/design-system` v1.1.11 기준 의존성 정리
+`@dmsej108/design-system` v1.1.11 기준 의존성 정리
 
 ---
 
