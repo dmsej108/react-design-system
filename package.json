@@ -1,6 +1,6 @@
 {
-  "name": "@zzou/design-system",
-  "version": "1.1.11",
+  "name": "@dmsej108/design-system",
+  "version": "2.0.0",
   "private": false,
   "type": "module",
   "description": "Reusable React design system for zzou.",
