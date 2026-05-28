@@ -7,12 +7,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zzous/react-design-system.git"
+    "url": "https://github.com/dmsej108/react-design-system.git"
   },
   "bugs": {
-    "url": "https://github.com/zzous/react-design-system/issues"
+    "url": "https://github.com/dmsej108/react-design-system/issues"
   },
-  "homepage": "https://zzous.github.io/react-design-system/",
+  "homepage": "https://dmsej108.github.io/react-design-system/",
   "exports": {
     ".": {
       "import": "./dist/index.js",
