@@ -57,6 +57,7 @@ export const Variants: Story = {
       <SButton variant="secondary">Secondary</SButton>
       <SButton variant="outline">Outline</SButton>
       <SButton variant="ghost">Ghost</SButton>
+      <SButton variant="danger">Danger</SButton>
     </div>
   ),
 };
