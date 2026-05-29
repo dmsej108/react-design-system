@@ -51,3 +51,6 @@ export type { ChipProps as SChipProps, ChipVariant as SChipVariant, ChipSize as 
 
 export { Textarea as STextarea } from './components/Textarea';
 export type { TextareaProps as STextareaProps, TextareaSize as STextareaSize, TextareaResize as STextareaResize } from './components/Textarea';
+
+export { Tab as STab } from './components/Tab';
+export type { TabProps as STabProps, TabItem as STabItem, TabVariant as STabVariant } from './components/Tab';

@@ -1,0 +1,118 @@
+/* ── Tab List (wrapper) ── */
+.tabList {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.fullWidth {
+  display: flex;
+  width: 100%;
+}
+
+.fullWidth .tab {
+  flex: 1;
+}
+
+/* ── Base Tab Button ── */
+.tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height: 44px;
+  border: none;
+  background: none;
+  font-family: var(--font-family-base, sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.tab:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* ────────────────────────────
+   Variant: filled (이미지 스타일)
+   어두운 갈색 배경 + 흰 텍스트
+──────────────────────────── */
+.filled {
+  background-color: var(--color-secondary-700);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.filled .tab {
+  color: rgba(255, 255, 255, 0.65);
+  background-color: transparent;
+}
+
+.filled .tab:hover:not(:disabled):not(.active) {
+  color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.filled .tab.active {
+  color: #ffffff;
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ────────────────────────────
+   Variant: underline
+   하단 border indicator 스타일
+──────────────────────────── */
+.underline {
+  border-bottom: 2px solid var(--ds-border);
+  gap: 4px;
+}
+
+.underline .tab {
+  color: var(--ds-text-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  padding: 0 16px;
+}
+
+.underline .tab:hover:not(:disabled):not(.active) {
+  color: var(--ds-text-2);
+}
+
+.underline .tab.active {
+  color: var(--ds-text);
+  font-weight: 700;
+  border-bottom-color: var(--ds-text);
+}
+
+/* ────────────────────────────
+   Variant: line
+   탭 사이 구분선 스타일
+──────────────────────────── */
+.line {
+  border: 1px solid var(--ds-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.line .tab {
+  color: var(--ds-text-2);
+  border-right: 1px solid var(--ds-border);
+  background-color: var(--ds-surface);
+}
+
+.line .tab:last-child {
+  border-right: none;
+}
+
+.line .tab:hover:not(:disabled):not(.active) {
+  background-color: var(--ds-surface-hover);
+}
+
+.line .tab.active {
+  color: var(--ds-text);
+  font-weight: 700;
+  background-color: var(--ds-surface-hover);
+}
