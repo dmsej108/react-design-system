@@ -1,0 +1,67 @@
+/* ── Wrapper ── */
+.wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* ── Table Base ── */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-family-base, sans-serif);
+  font-size: 13px;
+  color: var(--ds-text);
+  background-color: var(--ds-surface);
+}
+
+.fixed {
+  table-layout: fixed;
+}
+
+.auto {
+  table-layout: auto;
+}
+
+/* ── th (label) ── */
+.th {
+  padding: 10px 16px;
+  background-color: var(--color-neutral-50);
+  color: var(--ds-text-2);
+  font-weight: 600;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 140px;
+}
+
+/* ── td (value) ── */
+.td {
+  padding: 10px 16px;
+  background-color: var(--ds-surface);
+  color: var(--ds-text);
+  font-weight: 400;
+  text-align: left;
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+/* ── Bordered ── */
+.bordered .th,
+.bordered .td {
+  border: 1px solid var(--ds-border);
+}
+
+.bordered tr:first-child .th,
+.bordered tr:first-child .td {
+  border-top: 1px solid var(--ds-border);
+}
+
+/* ── Striped ── */
+.striped tr:nth-child(even) .td {
+  background-color: var(--color-neutral-50);
+}
+
+/* ── Hover ── */
+.table tbody tr:hover .td {
+  background-color: var(--ds-surface-hover);
+}
