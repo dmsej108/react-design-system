@@ -8,6 +8,7 @@ import { Button as SButton } from '../components/Button/Button';
 import { Input as SInput } from '../components/Input/Input';
 import { Select as SSelect } from '../components/Select/Select';
 import { Pagination as SPagination } from '../components/Pagination/Pagination';
+import { Icon as SIcon } from '../components/Icon/Icon';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -156,8 +157,8 @@ const ListSamplePage = () => {
           style={{ width: 120 }}
         />
         <div style={{ display: 'flex', gap: 8 }}>
-          <SButton variant="primary" onClick={handleSearch}>검색</SButton>
-          <SButton variant="outline" onClick={handleReset}>초기화</SButton>
+          <SButton variant="outline" leftIcon={<SIcon name="search" size="small" aria-hidden />} onClick={handleSearch}>검색</SButton>
+          <SButton variant="secondary" onClick={handleReset}>초기화</SButton>
         </div>
       </div>
 
