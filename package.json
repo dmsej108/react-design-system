@@ -46,6 +46,8 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
+    "ag-grid-community": "^35.3.0",
+    "ag-grid-react": "^35.3.0",
     "react-datepicker": "^9.1.0"
   },
   "peerDependencies": {

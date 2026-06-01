@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      ag-grid-community:
+        specifier: ^35.3.0
+        version: 35.3.0
+      ag-grid-react:
+        specifier: ^35.3.0
+        version: 35.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-datepicker:
         specifier: ^9.1.0
         version: 9.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -62,7 +68,7 @@ importers:
         version: 5.4.21
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.0.0(esbuild@0.25.12)(rollup@4.60.3)(typescript@5.9.3)(vite@5.4.21)
+        version: 5.0.0(esbuild@0.27.7)(rollup@4.60.3)(typescript@5.9.3)(vite@5.4.21)
 
 packages:
 
@@ -712,66 +718,79 @@ packages:
     resolution: {integrity: sha512-DV6fJoxEYWJOvaZIsok7KrYl0tPvga5OZ2yvKHNNYyk/2roMLqQAbGhr78EQ5YhHpnhLKJD3S1WFusAkmUuV5g==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.60.3':
     resolution: {integrity: sha512-mQKoJAzvuOs6F+TZybQO4GOTSMUu7v0WdxEk24krQ/uUxXoPTtHjuaUuPmFhtBcM4K0ons8nrE3JyhTuCFtT/w==}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.60.3':
     resolution: {integrity: sha512-Whjj2qoiJ6+OOJMGptTYazaJvjOJm+iKHpXQM1P3LzGjt7Ff++Tp7nH4N8J/BUA7R9IHfDyx4DJIflifwnbmIA==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.60.3':
     resolution: {integrity: sha512-4YTNHKqGng5+yiZt3mg77nmyuCfmNfX4fPmyUapBcIk+BdwSwmCWGXOUxhXbBEkFHtoN5boLj/5NON+u5QC9tg==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-loong64-gnu@4.60.3':
     resolution: {integrity: sha512-SU3kNlhkpI4UqlUc2VXPGK9o886ZsSeGfMAX2ba2b8DKmMXq4AL7KUrkSWVbb7koVqx41Yczx6dx5PNargIrEA==}
     cpu: [loong64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-loong64-musl@4.60.3':
     resolution: {integrity: sha512-6lDLl5h4TXpB1mTf2rQWnAk/LcXrx9vBfu/DT5TIPhvMhRWaZ5MxkIc8u4lJAmBo6klTe1ywXIUHFjylW505sg==}
     cpu: [loong64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-ppc64-gnu@4.60.3':
     resolution: {integrity: sha512-BMo8bOw8evlup/8G+cj5xWtPyp93xPdyoSN16Zy90Q2QZ0ZYRhCt6ZJSwbrRzG9HApFabjwj2p25TUPDWrhzqQ==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-ppc64-musl@4.60.3':
     resolution: {integrity: sha512-E0L8X1dZN1/Rph+5VPF6Xj2G7JJvMACVXtamTJIDrVI44Y3K+G8gQaMEAavbqCGTa16InptiVrX6eM6pmJ+7qA==}
     cpu: [ppc64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-riscv64-gnu@4.60.3':
     resolution: {integrity: sha512-oZJ/WHaVfHUiRAtmTAeo3DcevNsVvH8mbvodjZy7D5QKvCefO371SiKRpxoDcCxB3PTRTLayWBkvmDQKTcX/sw==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-musl@4.60.3':
     resolution: {integrity: sha512-Dhbyh7j9FybM3YaTgaHmVALwA8AkUwTPccyCQ79TG9AJUsMQqgN1DDEZNr4+QUfwiWvLDumW5vdwzoeUF+TNxQ==}
     cpu: [riscv64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-s390x-gnu@4.60.3':
     resolution: {integrity: sha512-cJd1X5XhHHlltkaypz1UcWLA8AcoIi1aWhsvaWDskD1oz2eKCypnqvTQ8ykMNI0RSmm7NkTdSqSSD7zM0xa6Ig==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.60.3':
     resolution: {integrity: sha512-DAZDBHQfG2oQuhY7mc6I3/qB4LU2fQCjRvxbDwd/Jdvb9fypP4IJ4qmtu6lNjes6B531AI8cg1aKC2di97bUxA==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.60.3':
     resolution: {integrity: sha512-cRxsE8c13mZOh3vP+wLDxpQBRrOHDIGOWyDL93Sy0Ga8y515fBcC2pjUfFwUe5T7tqvTvWbCpg1URM/AXdWIXA==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-openbsd-x64@4.60.3':
     resolution: {integrity: sha512-QaWcIgRxqEdQdhJqW4DJctsH6HCmo5vHxY0krHSX4jMtOqfzC+dqDGuHM87bu4H8JBeibWx7jFz+h6/4C8wA5Q==}
@@ -1095,6 +1114,18 @@ packages:
     resolution: {integrity: sha512-UVJyE9MttOsBQIDKw1skb9nAwQuR5wuGD3+82K6JgJlm/Y+KI92oNsMNGZCYdDsVtRHSak0pcV5Dno5+4jh9sw==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+
+  ag-charts-types@13.3.0:
+    resolution: {integrity: sha512-UMoAn908LC4ZIJSNfUckSBEFa79Mi1vFRA8qIRx+NusEuuFgXDioCZx4MxM7O3rDXlxTWH9DvQmcDjh7vyd89w==}
+
+  ag-grid-community@35.3.0:
+    resolution: {integrity: sha512-c9WQWB88J965IjBC/GPUX30aAZix10o6oYT86DWipcxgLZTIQlLSilJJEr1bno/245rPEAIMjhoU1gp9VIfURg==}
+
+  ag-grid-react@35.3.0:
+    resolution: {integrity: sha512-3c6YEFGQGNZxEi1PdK0b+WhKkKRJ7KxuYzsG4UmISyax5/J7N93f8B1TZK1pq+AgzPhdk/++vjZe3KhFdF3tog==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -1696,6 +1727,9 @@ packages:
     resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
     engines: {node: '>= 0.6.0'}
 
+  prop-types@15.8.1:
+    resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+
   quansync@0.2.11:
     resolution: {integrity: sha512-AifT7QEbW9Nri4tAwR5M/uzpBuqfZf+zwaEM/QkzEjj7NBuFD2rBuy0K3dE+8wltbezDV7JMA0WfnCPYRSYbXA==}
 
@@ -1722,6 +1756,9 @@ packages:
     resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
     peerDependencies:
       react: ^18.3.1
+
+  react-is@16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
@@ -2954,6 +2991,19 @@ snapshots:
 
   acorn@8.16.0: {}
 
+  ag-charts-types@13.3.0: {}
+
+  ag-grid-community@35.3.0:
+    dependencies:
+      ag-charts-types: 13.3.0
+
+  ag-grid-react@35.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      ag-grid-community: 35.3.0
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   ansi-regex@5.0.1: {}
 
   ansi-regex@6.2.2: {}
@@ -3537,6 +3587,12 @@ snapshots:
 
   process@0.11.10: {}
 
+  prop-types@15.8.1:
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react-is: 16.13.1
+
   quansync@0.2.11: {}
 
   react-datepicker@9.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
@@ -3571,6 +3627,8 @@ snapshots:
       loose-envify: 1.4.0
       react: 18.3.1
       scheduler: 0.23.2
+
+  react-is@16.13.1: {}
 
   react-is@17.0.2: {}
 
@@ -3793,7 +3851,7 @@ snapshots:
 
   ufo@1.6.4: {}
 
-  unplugin-dts@1.0.0(esbuild@0.25.12)(rollup@4.60.3)(typescript@5.9.3)(vite@5.4.21):
+  unplugin-dts@1.0.0(esbuild@0.27.7)(rollup@4.60.3)(typescript@5.9.3)(vite@5.4.21):
     dependencies:
       '@rollup/pluginutils': 5.3.0(rollup@4.60.3)
       '@volar/typescript': 2.4.28
@@ -3805,7 +3863,7 @@ snapshots:
       typescript: 5.9.3
       unplugin: 2.3.11
     optionalDependencies:
-      esbuild: 0.25.12
+      esbuild: 0.27.7
       rollup: 4.60.3
       vite: 5.4.21
     transitivePeerDependencies:
@@ -3839,9 +3897,9 @@ snapshots:
 
   uuid@9.0.1: {}
 
-  vite-plugin-dts@5.0.0(esbuild@0.25.12)(rollup@4.60.3)(typescript@5.9.3)(vite@5.4.21):
+  vite-plugin-dts@5.0.0(esbuild@0.27.7)(rollup@4.60.3)(typescript@5.9.3)(vite@5.4.21):
     dependencies:
-      unplugin-dts: 1.0.0(esbuild@0.25.12)(rollup@4.60.3)(typescript@5.9.3)(vite@5.4.21)
+      unplugin-dts: 1.0.0(esbuild@0.27.7)(rollup@4.60.3)(typescript@5.9.3)(vite@5.4.21)
     optionalDependencies:
       rollup: 4.60.3
       vite: 5.4.21
