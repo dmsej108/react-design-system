@@ -61,7 +61,3 @@
   background-color: var(--color-neutral-50);
 }
 
-/* ── Hover ── */
-.table tbody tr:hover .td {
-  background-color: var(--ds-surface-hover);
-}

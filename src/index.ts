@@ -56,4 +56,4 @@ export { Tab as STab } from './components/Tab';
 export type { TabProps as STabProps, TabItem as STabItem, TabVariant as STabVariant } from './components/Tab';
 
 export { Table as STable } from './components/Table';
-export type { TableProps as STableProps, TableRow as STableRow, TableCell as STableCell, TableLayout as STableLayout } from './components/Table';
+export type { TableProps as STableProps, TableRow as STableRow, TableCell as STableCell, TableColumn as STableColumn, TableLayout as STableLayout } from './components/Table';
