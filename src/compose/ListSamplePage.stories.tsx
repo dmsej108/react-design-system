@@ -120,7 +120,7 @@ const ListSamplePage = () => {
   return (
     <div style={{ fontFamily: 'Pretendard, sans-serif', maxWidth: 1200, margin: '0 auto', padding: 24 }}>
       <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 20, color: '#222' }}>
-        목록 샘플
+        목록 템플릿
       </h2>
 
       <div style={{
@@ -205,7 +205,7 @@ const ListSamplePage = () => {
 };
 
 const meta: Meta = {
-  title: 'Examples/목록 샘플',
+  title: 'Compose/목록 템플릿',
   parameters: { layout: 'padded' },
 };
 
@@ -214,5 +214,5 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: () => <ListSamplePage />,
-  name: '목록 샘플',
+  name: '목록 템플릿',
 };
