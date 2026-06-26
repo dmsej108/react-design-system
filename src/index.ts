@@ -31,7 +31,7 @@ export { Icon as SIcon } from './components/Icon';
 export type { IconProps as SIconProps, IconName, IconSize } from './components/Icon';
 
 export { DatePicker as SDatePicker } from './components/DatePicker';
-export type { DatePickerProps as SDatePickerProps } from './components/DatePicker';
+export type { DatePickerProps as SDatePickerProps, TimeSelectMode as STimeSelectMode } from './components/DatePicker';
 
 
 export { Pagination as SPagination } from './components/Pagination';

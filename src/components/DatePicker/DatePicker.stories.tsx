@@ -2,23 +2,41 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { DatePicker as SDatePicker } from './DatePicker';
 
+const createTime = (hours: number, minutes: number) =>
+  new Date(2024, 0, 1, hours, minutes, 0, 0);
+
+const businessHours = {
+  minTime: createTime(9, 0),
+  maxTime: createTime(18, 0),
+};
+
 const meta: Meta<typeof SDatePicker> = {
   title: 'Components/DatePicker',
   component: SDatePicker,
   tags: ['autodocs'],
   argTypes: {
-    label:       { control: 'text' },
-    placeholder: { control: 'text' },
-    size:        { control: 'radio', options: ['small', 'medium', 'large'] },
-    dateFormat:  { control: 'text' },
-    disabled:    { control: 'boolean' },
+    label:               { control: 'text' },
+    placeholder:         { control: 'text' },
+    size:                { control: 'radio', options: ['small', 'medium', 'large'] },
+    dateFormat:          { control: 'text' },
+    disabled:            { control: 'boolean' },
+    showTimeSelect:      { control: 'boolean' },
+    showTimeSelectOnly:  { control: 'boolean' },
+    timeSelectMode:      { control: 'radio', options: ['list', 'separate'] },
+    timeFormat:          { control: 'text' },
+    timeIntervals:       { control: { type: 'number', min: 1, step: 1 } },
   },
   args: {
-    label:       '날짜',
-    placeholder: '날짜 선택',
-    size:        'medium',
-    dateFormat:  'yyyy.MM.dd',
-    disabled:    false,
+    label:               '날짜',
+    placeholder:         '날짜 선택',
+    size:                'medium',
+    dateFormat:          'yyyy.MM.dd',
+    disabled:            false,
+    showTimeSelect:      false,
+    showTimeSelectOnly:  false,
+    timeSelectMode:      'list',
+    timeFormat:          'HH:mm',
+    timeIntervals:       30,
   },
 };
 
@@ -83,6 +101,83 @@ export const WeekdayOnly: Story = {
     <SDatePicker
       label="영업일 선택 (주말 제외)"
       filterDate={(date) => date.getDay() !== 0 && date.getDay() !== 6}
+    />
+  ),
+};
+
+/* ── 날짜 + 시간 ── */
+export const DateTime: Story = {
+  name: '날짜 · 시간',
+  render: () => (
+    <SDatePicker
+      label="예약 일시"
+      showTimeSelect
+      timeIntervals={10}
+    />
+  ),
+};
+
+/* ── 시간만 ── */
+export const TimeOnly: Story = {
+  name: '시간만',
+  render: () => (
+    <SDatePicker
+      label="시간"
+      showTimeSelectOnly
+      timeIntervals={15}
+    />
+  ),
+};
+
+/* ── 날짜 + 시간 (시·분 분리) ── */
+export const DateTimeSeparate: Story = {
+  name: '날짜 · 시간 (시·분 분리)',
+  render: () => (
+    <SDatePicker
+      label="예약 일시"
+      showTimeSelect
+      timeSelectMode="separate"
+      timeIntervals={15}
+    />
+  ),
+};
+
+/* ── 시간만 (시·분 분리) ── */
+export const TimeOnlySeparate: Story = {
+  name: '시간만 (시·분 분리)',
+  render: () => (
+    <SDatePicker
+      label="시간"
+      showTimeSelectOnly
+      timeSelectMode="separate"
+      timeIntervals={15}
+    />
+  ),
+};
+
+/* ── 시간 범위 (목록) ── */
+export const TimeRange: Story = {
+  name: '시간 범위 (09:00 ~ 18:00)',
+  render: () => (
+    <SDatePicker
+      label="예약 일시"
+      showTimeSelect
+      timeIntervals={15}
+      {...businessHours}
+    />
+  ),
+};
+
+/* ── 시간 범위 (시·분 분리) ── */
+export const TimeRangeSeparate: Story = {
+  name: '시간 범위 · 시·분 분리',
+  render: () => (
+    <SDatePicker
+      label="예약 일시"
+      showTimeSelect
+      timeSelectMode="separate"
+      timeIntervals={15}
+      {...businessHours}
     />
   ),
 };

@@ -7,3 +7,85 @@
 .datePicker {
   width: 100%;
 }
+
+.datePicker :global(.react-datepicker__time-container) {
+  border-left: 1px solid var(--base-bd-color, #e5e5e5);
+}
+
+.datePicker :global(.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box) {
+  width: 100%;
+}
+
+.datePicker :global(.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list) {
+  padding: 0;
+}
+
+.datePicker :global(.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item) {
+  height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+}
+
+.datePicker :global(.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected) {
+  background-color: var(--ds-primary, #2563eb);
+  color: #fff;
+}
+
+.datePicker :global(.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item:hover) {
+  background-color: var(--ds-bg-hover, #f2f2f2);
+  color: inherit;
+}
+
+.datePicker :global(.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected:hover) {
+  background-color: var(--ds-primary, #2563eb);
+  color: #fff;
+}
+
+.datePicker :global(.react-datepicker__input-time-container) {
+  margin: 0;
+  padding: 8px 12px 12px;
+}
+
+.datePicker :global(.react-datepicker-time__caption) {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ds-text-2, #444);
+  margin-bottom: 8px;
+}
+
+.datePicker :global(.react-datepicker-time__input-container) {
+  width: 100%;
+}
+
+.separateTime {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeSelect {
+  min-width: 72px;
+  height: 32px;
+  padding: 0 23px 0 8px;
+  border: 1px solid var(--ds-border, #d9d9d9);
+  border-radius: 3px;
+  font-family: var(--font-family-base, sans-serif);
+  font-size: 12px;
+  color: var(--ds-text, #222);
+  background-color: var(--ds-surface, #fff);
+  background-image: url("data:image/svg+xml,%3Csvg width='13' height='12' viewBox='0 0 13 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.95099 4.20001L6.95099 7.20001L3.95099 4.20001' stroke='%23767676'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 9px center;
+  appearance: none;
+}
+
+.timeSelect:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.timeSeparator {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ds-text-muted, #767676);
+}
